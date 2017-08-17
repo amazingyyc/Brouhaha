@@ -1,0 +1,239 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		340953401EED516400A42115 /* BrouConvolutionMM.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3409533F1EED516400A42115 /* BrouConvolutionMM.metal */; };
+		342A35991F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal in Sources */ = {isa = PBXBuildFile; fileRef = 342A35981F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal */; };
+		343452701F1E09F3007DBA81 /* BrouAdd.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3434526F1F1E09F3007DBA81 /* BrouAdd.metal */; };
+		3463FF741ED18A44003D7F2C /* BrouConvolution.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF6E1ED18A44003D7F2C /* BrouConvolution.metal */; };
+		3463FF751ED18A44003D7F2C /* BrouFullconnect.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF6F1ED18A44003D7F2C /* BrouFullconnect.metal */; };
+		3463FF761ED18A44003D7F2C /* BrouPooling.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF701ED18A44003D7F2C /* BrouPooling.metal */; };
+		3463FF771ED18A44003D7F2C /* BrouLinear.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF711ED18A44003D7F2C /* BrouLinear.metal */; };
+		3463FF781ED18A44003D7F2C /* BrouReLu.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF721ED18A44003D7F2C /* BrouReLu.metal */; };
+		3463FF791ED18A44003D7F2C /* BrouTanH.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF731ED18A44003D7F2C /* BrouTanH.metal */; };
+		3463FF811ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF801ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal */; };
+		348B4C0D1F24DF1800F674A1 /* BrouStruct.metal in Sources */ = {isa = PBXBuildFile; fileRef = 348B4C0C1F24DF1800F674A1 /* BrouStruct.metal */; };
+		34A686E31F15B94A00C8EAD7 /* BrouBatchNormalization.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34A686E21F15B94A00C8EAD7 /* BrouBatchNormalization.metal */; };
+		34A72CB41F3C7C8D00EEED95 /* BrouDilatedConvolution.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34A72CB31F3C7C8D00EEED95 /* BrouDilatedConvolution.metal */; };
+		34B62EFB1F2762E900A5857B /* BrouRGBAImageConvert.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34B62EFA1F2762E900A5857B /* BrouRGBAImageConvert.metal */; };
+		34C884861F2AD98000DC309C /* BrouPReLu.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34C884851F2AD98000DC309C /* BrouPReLu.metal */; };
+		34D21CE21EFF80C200109A5E /* BrouConvert.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34D21CE11EFF80C200109A5E /* BrouConvert.metal */; };
+		34F6229A1F0659DB00046494 /* BrouDilatedConvolutionMM.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34F622991F0659DB00046494 /* BrouDilatedConvolutionMM.metal */; };
+		34F6229C1F0887F300046494 /* BrouTransposedConvolutionMM.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34F6229B1F0887F300046494 /* BrouTransposedConvolutionMM.metal */; };
+		34F6229E1F089BA700046494 /* BrouMatrixMultiply.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34F6229D1F089BA700046494 /* BrouMatrixMultiply.metal */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3409533F1EED516400A42115 /* BrouConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvolutionMM.metal; sourceTree = "<group>"; };
+		342A35981F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTransposedConvolution.metal; sourceTree = "<group>"; };
+		3434526F1F1E09F3007DBA81 /* BrouAdd.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouAdd.metal; sourceTree = "<group>"; };
+		3463FF641ED18A2D003D7F2C /* BrouhahaMetal.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = BrouhahaMetal.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3463FF6E1ED18A44003D7F2C /* BrouConvolution.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouConvolution.metal; sourceTree = "<group>"; };
+		3463FF6F1ED18A44003D7F2C /* BrouFullconnect.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouFullconnect.metal; sourceTree = "<group>"; };
+		3463FF701ED18A44003D7F2C /* BrouPooling.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouPooling.metal; sourceTree = "<group>"; };
+		3463FF711ED18A44003D7F2C /* BrouLinear.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouLinear.metal; sourceTree = "<group>"; };
+		3463FF721ED18A44003D7F2C /* BrouReLu.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouReLu.metal; sourceTree = "<group>"; };
+		3463FF731ED18A44003D7F2C /* BrouTanH.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouTanH.metal; sourceTree = "<group>"; };
+		3463FF801ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouMatrixMultiplyFloat32.metal; sourceTree = "<group>"; };
+		348B4C0C1F24DF1800F674A1 /* BrouStruct.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouStruct.metal; sourceTree = "<group>"; };
+		34A686E21F15B94A00C8EAD7 /* BrouBatchNormalization.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouBatchNormalization.metal; sourceTree = "<group>"; };
+		34A72CB31F3C7C8D00EEED95 /* BrouDilatedConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouDilatedConvolution.metal; sourceTree = "<group>"; };
+		34B62EFA1F2762E900A5857B /* BrouRGBAImageConvert.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouRGBAImageConvert.metal; sourceTree = "<group>"; };
+		34C884851F2AD98000DC309C /* BrouPReLu.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouPReLu.metal; sourceTree = "<group>"; };
+		34D21CE11EFF80C200109A5E /* BrouConvert.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvert.metal; sourceTree = "<group>"; };
+		34F622991F0659DB00046494 /* BrouDilatedConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouDilatedConvolutionMM.metal; sourceTree = "<group>"; };
+		34F6229B1F0887F300046494 /* BrouTransposedConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTransposedConvolutionMM.metal; sourceTree = "<group>"; };
+		34F6229D1F089BA700046494 /* BrouMatrixMultiply.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouMatrixMultiply.metal; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3463FF5D1ED18A2D003D7F2C = {
+			isa = PBXGroup;
+			children = (
+				3463FF661ED18A2D003D7F2C /* BrouhahaMetal */,
+				3463FF651ED18A2D003D7F2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3463FF651ED18A2D003D7F2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3463FF641ED18A2D003D7F2C /* BrouhahaMetal.metallib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3463FF661ED18A2D003D7F2C /* BrouhahaMetal */ = {
+			isa = PBXGroup;
+			children = (
+				348B4C0C1F24DF1800F674A1 /* BrouStruct.metal */,
+				3463FF6E1ED18A44003D7F2C /* BrouConvolution.metal */,
+				3409533F1EED516400A42115 /* BrouConvolutionMM.metal */,
+				342A35981F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal */,
+				34F6229B1F0887F300046494 /* BrouTransposedConvolutionMM.metal */,
+				34A72CB31F3C7C8D00EEED95 /* BrouDilatedConvolution.metal */,
+				34F622991F0659DB00046494 /* BrouDilatedConvolutionMM.metal */,
+				34F6229D1F089BA700046494 /* BrouMatrixMultiply.metal */,
+				34A686E21F15B94A00C8EAD7 /* BrouBatchNormalization.metal */,
+				3463FF6F1ED18A44003D7F2C /* BrouFullconnect.metal */,
+				3463FF701ED18A44003D7F2C /* BrouPooling.metal */,
+				3463FF711ED18A44003D7F2C /* BrouLinear.metal */,
+				3463FF721ED18A44003D7F2C /* BrouReLu.metal */,
+				34C884851F2AD98000DC309C /* BrouPReLu.metal */,
+				3463FF731ED18A44003D7F2C /* BrouTanH.metal */,
+				3434526F1F1E09F3007DBA81 /* BrouAdd.metal */,
+				34B62EFA1F2762E900A5857B /* BrouRGBAImageConvert.metal */,
+				34D21CE11EFF80C200109A5E /* BrouConvert.metal */,
+				3463FF801ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal */,
+			);
+			path = BrouhahaMetal;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3463FF631ED18A2D003D7F2C /* BrouhahaMetal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3463FF6B1ED18A2D003D7F2C /* Build configuration list for PBXNativeTarget "BrouhahaMetal" */;
+			buildPhases = (
+				3463FF621ED18A2D003D7F2C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrouhahaMetal;
+			productName = BrouhahaMetal;
+			productReference = 3463FF641ED18A2D003D7F2C /* BrouhahaMetal.metallib */;
+			productType = "com.apple.product-type.metal-library";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3463FF5E1ED18A2D003D7F2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = yanyuanchi;
+				TargetAttributes = {
+					3463FF631ED18A2D003D7F2C = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = V7F846A4L3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3463FF611ED18A2D003D7F2C /* Build configuration list for PBXProject "BrouhahaMetal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3463FF5D1ED18A2D003D7F2C;
+			productRefGroup = 3463FF651ED18A2D003D7F2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3463FF631ED18A2D003D7F2C /* BrouhahaMetal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3463FF621ED18A2D003D7F2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				348B4C0D1F24DF1800F674A1 /* BrouStruct.metal in Sources */,
+				34F6229E1F089BA700046494 /* BrouMatrixMultiply.metal in Sources */,
+				3463FF771ED18A44003D7F2C /* BrouLinear.metal in Sources */,
+				34B62EFB1F2762E900A5857B /* BrouRGBAImageConvert.metal in Sources */,
+				34F6229C1F0887F300046494 /* BrouTransposedConvolutionMM.metal in Sources */,
+				34D21CE21EFF80C200109A5E /* BrouConvert.metal in Sources */,
+				34F6229A1F0659DB00046494 /* BrouDilatedConvolutionMM.metal in Sources */,
+				342A35991F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal in Sources */,
+				3463FF741ED18A44003D7F2C /* BrouConvolution.metal in Sources */,
+				34A72CB41F3C7C8D00EEED95 /* BrouDilatedConvolution.metal in Sources */,
+				3463FF811ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal in Sources */,
+				3463FF761ED18A44003D7F2C /* BrouPooling.metal in Sources */,
+				34A686E31F15B94A00C8EAD7 /* BrouBatchNormalization.metal in Sources */,
+				3463FF751ED18A44003D7F2C /* BrouFullconnect.metal in Sources */,
+				340953401EED516400A42115 /* BrouConvolutionMM.metal in Sources */,
+				343452701F1E09F3007DBA81 /* BrouAdd.metal in Sources */,
+				3463FF791ED18A44003D7F2C /* BrouTanH.metal in Sources */,
+				34C884861F2AD98000DC309C /* BrouPReLu.metal in Sources */,
+				3463FF781ED18A44003D7F2C /* BrouReLu.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3463FF691ED18A2D003D7F2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3463FF6A1ED18A2D003D7F2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		3463FF6C1ED18A2D003D7F2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = V7F846A4L3;
+				MTL_LANGUAGE_REVISION = Metal12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3463FF6D1ED18A2D003D7F2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = V7F846A4L3;
+				MTL_LANGUAGE_REVISION = Metal12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3463FF611ED18A2D003D7F2C /* Build configuration list for PBXProject "BrouhahaMetal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3463FF691ED18A2D003D7F2C /* Debug */,
+				3463FF6A1ED18A2D003D7F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3463FF6B1ED18A2D003D7F2C /* Build configuration list for PBXNativeTarget "BrouhahaMetal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3463FF6C1ED18A2D003D7F2C /* Debug */,
+				3463FF6D1ED18A2D003D7F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3463FF5E1ED18A2D003D7F2C /* Project object */;
+}
