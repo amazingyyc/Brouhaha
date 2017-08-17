@@ -1,7 +1,8 @@
 # Brouhaha: is a Deep Learning toolkit based on iOS Metal
 
 The Brouhaha is a Deep Learning toolkit that based on iOS Metal. It make easier to use the iOS GPU shader to run the Deep Learning algorithms.This toolkit is no only include the Metal shader, but also include abstract layer of Neural networks write in objective-c. 
-china site:https://gitee.com/JingQiManHua/Brouhaha
+## China Site
+https://gitee.com/JingQiManHua/Brouhaha
 
 ## Introduction
 The Brouhaha is only used to run the predicting of a Deep Learning algorithm, it can’t used to training a algorithm. Before useing Brouhaha, you must have a pretrained model by other toolkit like: Caffe, Torch or Tensorflow.
