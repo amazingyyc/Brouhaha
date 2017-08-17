@@ -1,6 +1,10 @@
 # Brouhaha:基于iOS Metal的深度学习运算库
 
-Brouhah是一个基于iOS Metal的深度学习运算库。这个库意思方便的调用iOS Metal Shader执行深度学习算法。github地址:https://github.com/amazingyyc/Brouhaha
+Brouhah是一个基于iOS Metal的深度学习运算库。这个库意思方便的调用iOS Metal Shader执行深度学习算法。
+
+## 地址
+github:https://github.com/amazingyyc/Brouhaha
+码云:https://gitee.com/JingQiManHua/Brouhaha
 
 ## 介绍
 Brouhaha只包含深度学习的前向运算，并不能用于训练一个深度学习模型。在使用Brouhaha之前必须有一个使用其他的训练库（比如：Caffe，Tensorflow，Torch）训练好的深度学习model。Brouhaha包含常用的卷积（包括转置卷积，Dilated卷积），池化，激活，全联接，BatchNormalize和方便图片转换的转换层。主要包括以下三个部分：
