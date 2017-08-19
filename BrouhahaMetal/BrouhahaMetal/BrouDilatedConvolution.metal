@@ -102,7 +102,7 @@ kernel void brouDilatedConvolution(device half *input                           
             
             device half4 *outputV = (device half4*)(output + (outY * outputWidth + outX) * outputChannel + z);
             
-            outputV[0] = out + biasV;
+            outputV[0] = out;
         }
     }
 }
