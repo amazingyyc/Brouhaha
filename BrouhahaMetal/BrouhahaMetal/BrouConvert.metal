@@ -1,94 +1,79 @@
-/**
- * BrouConvert.metal
- * BrouhahaMetal
- *
- * Created by yanyuanchi on 2017/6/25.
- * Copyright © 2017年 yanyuanchi. All rights reserved.
- *
- * convert the float32 to float16 or float16=>float32
- */
+#if defined(from) && defined(to) && defined(from4) && defined(to4) && defined(BROU_CONVERT)
 
-#include <metal_stdlib>
-using namespace metal;
-
-/**
- * if the input and the output is 3d
- * then the input ant output's dimension is (height, width, channelX4)
- *
- * if the input and output is 1d than the dimension is (channelX4, 1)
- */
-constant int height  [[function_constant(0)]];
-constant int width   [[function_constant(1)]];
-constant int channel [[function_constant(2)]];
-
-constant int channelX4 [[function_constant(3)]];
-
-kernel void convertFloatToHalf3D(device float *input    [[buffer(0)]],
-                                 device half  *output   [[buffer(1)]],
-                                 ushort3 grid [[thread_position_in_grid]]) {
-    int x = grid.x;
-    int y = grid.y;
-    int z = grid.z << 2;
-
-    if (x >= width || y >= height || z >= channel) {
-        return;
-    }
-
-    device float4 *inputV = (device float4*)(input  + (y * width + x) * channelX4 + z);
-    device half4 *outputV = (device  half4*)(output + (y * width + x) * channelX4 + z);
-
-    outputV[0] = static_cast<half4>(inputV[0]);
-}
-
-kernel void convertFloatToHalf1D(device float *input    [[buffer(0)]],
-                                 device half  *output   [[buffer(1)]],
-                                 ushort grid [[thread_position_in_grid]]) {
+kernel void BROU_CONVERT(from, to, 1D)(device from *input           [[buffer(0)]],
+                                       device to   *output          [[buffer(1)]],
+                                       constant TensorShape& shape  [[buffer(2)]],
+                                       ushort grid [[thread_position_in_grid]]) {
     int index = grid << 2;
-
-    if (index >= channel) {
+    
+    if (index >= shape.dim0) {
         return;
     }
-
-    device float4 *inputV  = (device float4*)(input  + index);
-    device half4  *outputV = (device  half4*)(output + index);
-
-    outputV[0] = static_cast<half4>(inputV[0]);
+    
+    device from4 *inputV  = (device from4*)(input  + index);
+    device to4   *outputV = (device   to4*)(output + index);
+    
+    outputV[0] = static_cast<to4>(inputV[0]);
 }
 
-kernel void convertHalfToFloat3D(device half  *input[[buffer(0)]],
-                                 device float *output[[buffer(1)]],
-                                 ushort3 grid [[thread_position_in_grid]]) {
-    int x = grid.x;
-    int y = grid.y;
+kernel void BROU_CONVERT(from, to, 2D)(device from *input           [[buffer(0)]],
+                                       device to   *output          [[buffer(1)]],
+                                       constant TensorShape& shape  [[buffer(2)]],
+                                       ushort2 grid [[thread_position_in_grid]]) {
+    int height = shape.dim0;
+    int width  = shape.dim1;
+    
+    int y = grid.y << 2;
+    int x = grid.x << 2;
+    
+    if (y >= height || x >= width) {
+        return;
+    }
+    
+    int maxY = min(y + 4, height);
+    
+    for (int j = y; j < maxY; ++j) {
+        int offset = j * width + x;
+        
+        device from4 *inputV  = (device from4*)(input  + offset);
+        device to4   *outputV = (device   to4*)(output + offset);
+        
+        outputV[0] = static_cast<to4>(inputV[0]);
+    }
+}
+
+kernel void BROU_CONVERT(from, to, 3D)(device from *input           [[buffer(0)]],
+                                       device to   *output          [[buffer(1)]],
+                                       constant TensorShape& shape  [[buffer(2)]],
+                                       ushort3 grid [[thread_position_in_grid]]) {
+    int height  = shape.dim0;
+    int width   = shape.dim1;
+    int channel = shape.dim2;
+    
+    int y = grid.y << 2;
+    int x = grid.x << 2;
     int z = grid.z << 2;
-
-    if (x >= width || y >= height || z >= channel) {
+    
+    if (y >= height || x >= width || z >= channel) {
         return;
     }
-
-    device half4  *inputV  = (device  half4*)(input  + (y * width + x) * channelX4 + z);
-    device float4 *outputV = (device float4*)(output + (y * width + x) * channelX4 + z);
-
-    outputV[0] = static_cast<float4>(inputV[0]);
-}
-
-kernel void convertHalfToFloat1D(device half  *input[[buffer(0)]],
-                                 device float *output[[buffer(1)]],
-                                 ushort grid [[thread_position_in_grid]]) {
-    int index = grid << 2;
-
-    if (index >= channel) {
-        return;
+    
+    int maxY = min(y + 4, height);
+    int maxX = min(x + 4, width);
+    
+    for (int j = y; j < maxY; ++j) {
+        for (int i = x; i < maxX; ++i) {
+            int offset = (j * width + i) * channel + z;
+            
+            device from4 *inputV  = (device from4*)(input  + offset);
+            device to4   *outputV = (device   to4*)(output + offset);
+            
+            outputV[0] = static_cast<to4>(inputV[0]);
+        }
     }
-
-    device half4 *inputV   = (device  half4*)(input  + index);
-    device float4 *outputV = (device float4*)(output + index);
-
-    outputV[0] = static_cast<float4>(inputV[0]);
 }
 
-
-
+#endif
 
 
 

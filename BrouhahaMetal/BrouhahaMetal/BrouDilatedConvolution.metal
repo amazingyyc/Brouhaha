@@ -2,20 +2,16 @@
  * handle the dialted convolution
  */
 
-#include <metal_stdlib>
+#if defined(real) && defined(real4) && defined(BROU)
 
-#include "BrouStruct.metal"
-
-using namespace metal;
-
-kernel void brouDilatedConvolution(device half *input                           [[buffer(0)]],
-                                   device half *kerne                           [[buffer(1)]],
-                                   device half *bia                             [[buffer(2)]],
-                                   device half *output                          [[buffer(3)]],
-                                   constant TensorShape& inputShape             [[buffer(4)]],
-                                   constant TensorShape& outputShape            [[buffer(5)]],
-                                   constant ConvolutionShape& convolutionShape  [[buffer(6)]],
-                                   ushort3 grid [[thread_position_in_grid]]) {
+kernel void BROU(DilatedConvolution)(device real *input                           [[buffer(0)]],
+                                     device real *kerne                           [[buffer(1)]],
+                                     device real *bia                             [[buffer(2)]],
+                                     device real *output                          [[buffer(3)]],
+                                     constant TensorShape& inputShape             [[buffer(4)]],
+                                     constant TensorShape& outputShape            [[buffer(5)]],
+                                     constant ConvolutionShape& convolutionShape  [[buffer(6)]],
+                                     ushort3 grid [[thread_position_in_grid]]) {
     int outputHeight  = outputShape.dim0;
     int outputWidth   = outputShape.dim1;
     int outputChannel = outputShape.dim2;
@@ -47,11 +43,11 @@ kernel void brouDilatedConvolution(device half *input                           
     int maxOutY = min(y + 4, outputHeight);
     int maxOutX = min(x + 4, outputWidth);
     
-    half4 biasV = convolutionShape.haveBias ? ((device half4*)(bia + z))[0] : 0;
+    real4 biasV = convolutionShape.haveBias ? ((device real4*)(bia + z))[0] : 0;
     
     for (int outY = y; outY < maxOutY; ++outY) {
         for (int outX = x; outX < maxOutX; ++outX) {
-            half4 out = biasV;
+            real4 out = biasV;
             
             int inputTop =  -padTop  + outY * strideY;
             int inputLeft = -padLeft + outX * strideX;
@@ -70,20 +66,20 @@ kernel void brouDilatedConvolution(device half *input                           
             
             for (int inY = inputTop, kernelY = kernelTop; inY <= inputBottom; inY += dilatedY, ++kernelY) {
                 for (int inX = inputLeft, kernelX = kenelLeft; inX <= inputRight; inX += dilatedX, ++kernelX) {
-                    device half *inputOffset = input + (inY * inputWidth + inX) * inputChannel;
+                    device real *inputOffset = input + (inY * inputWidth + inX) * inputChannel;
                     
-                    device half *kernelOffset0 = kerne + (((z  ) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
-                    device half *kernelOffset1 = kerne + (((z+1) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
-                    device half *kernelOffset2 = kerne + (((z+2) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
-                    device half *kernelOffset3 = kerne + (((z+3) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
+                    device real *kernelOffset0 = kerne + (((z  ) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
+                    device real *kernelOffset1 = kerne + (((z+1) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
+                    device real *kernelOffset2 = kerne + (((z+2) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
+                    device real *kernelOffset3 = kerne + (((z+3) * kernelHeight + kernelY) * kernelWidth + kernelX) * inputChannel;
                     
                     for (int c = 0; c < inputChannel; c += 4) {
-                        half4 inV = ((device half4*)(inputOffset))[0];
+                        real4 inV = ((device real4*)(inputOffset))[0];
                         
-                        half4 kernelV0 = ((device half4*)(kernelOffset0))[0];
-                        half4 kernelV1 = ((device half4*)(kernelOffset1))[0];
-                        half4 kernelV2 = ((device half4*)(kernelOffset2))[0];
-                        half4 kernelV3 = ((device half4*)(kernelOffset3))[0];
+                        real4 kernelV0 = ((device real4*)(kernelOffset0))[0];
+                        real4 kernelV1 = ((device real4*)(kernelOffset1))[0];
+                        real4 kernelV2 = ((device real4*)(kernelOffset2))[0];
+                        real4 kernelV3 = ((device real4*)(kernelOffset3))[0];
                         
                         out.x += dot(inV, kernelV0);
                         out.y += dot(inV, kernelV1);
@@ -100,28 +96,14 @@ kernel void brouDilatedConvolution(device half *input                           
                 }
             }
             
-            device half4 *outputV = (device half4*)(output + (outY * outputWidth + outX) * outputChannel + z);
+            device real4 *outputV = (device real4*)(output + (outY * outputWidth + outX) * outputChannel + z);
             
             outputV[0] = out;
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif
 
 
 

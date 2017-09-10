@@ -3,43 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		341E6CBC1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 341E6CBB1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.m */; };
-		341E6CC51F3EDAA300C9C684 /* BrouUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 341E6CC41F3EDAA300C9C684 /* BrouUtils.c */; };
-		341E6CC91F3EE9B900C9C684 /* BrouNeon.c in Sources */ = {isa = PBXBuildFile; fileRef = 341E6CC71F3EE9B900C9C684 /* BrouNeon.c */; };
-		34237A9D1F3AFA9800E6EBFF /* BrouAddLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A701F3AFA9800E6EBFF /* BrouAddLayer.m */; };
-		34237A9E1F3AFA9800E6EBFF /* BrouAveragePoolingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A721F3AFA9800E6EBFF /* BrouAveragePoolingLayer.m */; };
-		34237A9F1F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A741F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.m */; };
-		34237AA01F3AFA9800E6EBFF /* BrouConvertLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A761F3AFA9800E6EBFF /* BrouConvertLayer.m */; };
-		34237AA11F3AFA9800E6EBFF /* BrouConvolutionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A781F3AFA9800E6EBFF /* BrouConvolutionLayer.m */; };
-		34237AA21F3AFA9800E6EBFF /* BrouConvolutionMMLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A7A1F3AFA9800E6EBFF /* BrouConvolutionMMLayer.m */; };
-		34237AA31F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A7C1F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.m */; };
-		34237AA41F3AFA9800E6EBFF /* BrouFullConnectLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A7E1F3AFA9800E6EBFF /* BrouFullConnectLayer.m */; };
-		34237AA51F3AFA9800E6EBFF /* BrouLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A801F3AFA9800E6EBFF /* BrouLayer.m */; };
-		34237AA61F3AFA9800E6EBFF /* BrouLinearLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A821F3AFA9800E6EBFF /* BrouLinearLayer.m */; };
-		34237AA71F3AFA9800E6EBFF /* BrouMaxPoolingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A841F3AFA9800E6EBFF /* BrouMaxPoolingLayer.m */; };
-		34237AA81F3AFA9800E6EBFF /* BrouPoolingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A861F3AFA9800E6EBFF /* BrouPoolingLayer.m */; };
-		34237AA91F3AFA9800E6EBFF /* BrouPReLuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A881F3AFA9800E6EBFF /* BrouPReLuLayer.m */; };
-		34237AAA1F3AFA9800E6EBFF /* BrouReLuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A8A1F3AFA9800E6EBFF /* BrouReLuLayer.m */; };
-		34237AAB1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A8C1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.m */; };
-		34237AAC1F3AFA9800E6EBFF /* BrouTanHLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A8E1F3AFA9800E6EBFF /* BrouTanHLayer.m */; };
-		34237AAD1F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A901F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.m */; };
-		34237AAE1F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A921F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.m */; };
-		34237AAF1F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A951F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.m */; };
-		34237AB01F3AFA9800E6EBFF /* BrouMatrixMultipy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34237A971F3AFA9800E6EBFF /* BrouMatrixMultipy.m */; };
-		34237AB11F3AFA9800E6EBFF /* BrouConvolutionConvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 34237A991F3AFA9800E6EBFF /* BrouConvolutionConvert.c */; };
-		34237AB21F3AFA9800E6EBFF /* BrouConvertFloat.c in Sources */ = {isa = PBXBuildFile; fileRef = 34237A9B1F3AFA9800E6EBFF /* BrouConvertFloat.c */; };
-		3452352D1EF6A1E300F6AD53 /* BrouNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3452352C1EF6A1E300F6AD53 /* BrouNet.m */; };
-		34F8658D1ECC670D00354C8D /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F8658C1ECC670D00354C8D /* Metal.framework */; };
+		34317EA91F5BC4340054B8DC /* BrouTemporaryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer.m */; };
+		3450452C1F630E5A003666A3 /* BrouLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3498F0BF1F493EC0006DF7D1 /* BrouLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3498F0B31F4938EC006DF7D1 /* BrouNeon.c in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0B21F4938EC006DF7D1 /* BrouNeon.c */; };
+		3498F0B81F4939E1006DF7D1 /* BrouUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0B71F4939E1006DF7D1 /* BrouUtils.c */; };
+		3498F0BC1F493B08006DF7D1 /* BrouConvertType.c in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0BA1F493B08006DF7D1 /* BrouConvertType.c */; };
+		3498F0C81F494298006DF7D1 /* Brouhaha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0C71F494298006DF7D1 /* Brouhaha.m */; };
+		34F99EF41F4E95B700261B45 /* BrouLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0C01F493EC0006DF7D1 /* BrouLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		34F8654F1ECC446B00354C8D /* CopyFiles */ = {
+		3498F0A01F493713006DF7D1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
@@ -49,295 +29,282 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		341E6CBA1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouDilatedConvolutionLayer.h; sourceTree = "<group>"; };
-		341E6CBB1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouDilatedConvolutionLayer.m; sourceTree = "<group>"; };
-		341E6CC21F3ED8EC00C9C684 /* BrouUtilsHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouUtilsHeaders.h; sourceTree = "<group>"; };
-		341E6CC31F3ED9F800C9C684 /* BrouUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouUtils.h; sourceTree = "<group>"; };
-		341E6CC41F3EDAA300C9C684 /* BrouUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouUtils.c; sourceTree = "<group>"; };
-		341E6CC61F3EDF9100C9C684 /* BrouConvertFloat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvertFloat.h; sourceTree = "<group>"; };
-		341E6CC71F3EE9B900C9C684 /* BrouNeon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouNeon.c; sourceTree = "<group>"; };
-		341E6CC81F3EE9B900C9C684 /* BrouNeon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouNeon.h; sourceTree = "<group>"; };
-		34237A6F1F3AFA9800E6EBFF /* BrouAddLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouAddLayer.h; sourceTree = "<group>"; };
-		34237A701F3AFA9800E6EBFF /* BrouAddLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouAddLayer.m; sourceTree = "<group>"; };
-		34237A711F3AFA9800E6EBFF /* BrouAveragePoolingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouAveragePoolingLayer.h; sourceTree = "<group>"; };
-		34237A721F3AFA9800E6EBFF /* BrouAveragePoolingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouAveragePoolingLayer.m; sourceTree = "<group>"; };
-		34237A731F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouBatchNormalizationLayer.h; sourceTree = "<group>"; };
-		34237A741F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouBatchNormalizationLayer.m; sourceTree = "<group>"; };
-		34237A751F3AFA9800E6EBFF /* BrouConvertLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouConvertLayer.h; sourceTree = "<group>"; };
-		34237A761F3AFA9800E6EBFF /* BrouConvertLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouConvertLayer.m; sourceTree = "<group>"; };
-		34237A771F3AFA9800E6EBFF /* BrouConvolutionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouConvolutionLayer.h; sourceTree = "<group>"; };
-		34237A781F3AFA9800E6EBFF /* BrouConvolutionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouConvolutionLayer.m; sourceTree = "<group>"; };
-		34237A791F3AFA9800E6EBFF /* BrouConvolutionMMLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouConvolutionMMLayer.h; sourceTree = "<group>"; };
-		34237A7A1F3AFA9800E6EBFF /* BrouConvolutionMMLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouConvolutionMMLayer.m; sourceTree = "<group>"; };
-		34237A7B1F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouDilatedConvolutionMMLayer.h; sourceTree = "<group>"; };
-		34237A7C1F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouDilatedConvolutionMMLayer.m; sourceTree = "<group>"; };
-		34237A7D1F3AFA9800E6EBFF /* BrouFullConnectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouFullConnectLayer.h; sourceTree = "<group>"; };
-		34237A7E1F3AFA9800E6EBFF /* BrouFullConnectLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouFullConnectLayer.m; sourceTree = "<group>"; };
-		34237A7F1F3AFA9800E6EBFF /* BrouLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouLayer.h; sourceTree = "<group>"; };
-		34237A801F3AFA9800E6EBFF /* BrouLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouLayer.m; sourceTree = "<group>"; };
-		34237A811F3AFA9800E6EBFF /* BrouLinearLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouLinearLayer.h; sourceTree = "<group>"; };
-		34237A821F3AFA9800E6EBFF /* BrouLinearLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouLinearLayer.m; sourceTree = "<group>"; };
-		34237A831F3AFA9800E6EBFF /* BrouMaxPoolingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouMaxPoolingLayer.h; sourceTree = "<group>"; };
-		34237A841F3AFA9800E6EBFF /* BrouMaxPoolingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouMaxPoolingLayer.m; sourceTree = "<group>"; };
-		34237A851F3AFA9800E6EBFF /* BrouPoolingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouPoolingLayer.h; sourceTree = "<group>"; };
-		34237A861F3AFA9800E6EBFF /* BrouPoolingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouPoolingLayer.m; sourceTree = "<group>"; };
-		34237A871F3AFA9800E6EBFF /* BrouPReLuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouPReLuLayer.h; sourceTree = "<group>"; };
-		34237A881F3AFA9800E6EBFF /* BrouPReLuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouPReLuLayer.m; sourceTree = "<group>"; };
-		34237A891F3AFA9800E6EBFF /* BrouReLuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouReLuLayer.h; sourceTree = "<group>"; };
-		34237A8A1F3AFA9800E6EBFF /* BrouReLuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouReLuLayer.m; sourceTree = "<group>"; };
-		34237A8B1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouRGBAConvertLayer.h; sourceTree = "<group>"; };
-		34237A8C1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouRGBAConvertLayer.m; sourceTree = "<group>"; };
-		34237A8D1F3AFA9800E6EBFF /* BrouTanHLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouTanHLayer.h; sourceTree = "<group>"; };
-		34237A8E1F3AFA9800E6EBFF /* BrouTanHLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouTanHLayer.m; sourceTree = "<group>"; };
-		34237A8F1F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouTransposedConvolutionLayer.h; sourceTree = "<group>"; };
-		34237A901F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouTransposedConvolutionLayer.m; sourceTree = "<group>"; };
-		34237A911F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouTransposedConvolutionMMLayer.h; sourceTree = "<group>"; };
-		34237A921F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouTransposedConvolutionMMLayer.m; sourceTree = "<group>"; };
-		34237A941F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouMatrixMultiplyX4.h; sourceTree = "<group>"; };
-		34237A951F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouMatrixMultiplyX4.m; sourceTree = "<group>"; };
-		34237A961F3AFA9800E6EBFF /* BrouMatrixMultipy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrouMatrixMultipy.h; sourceTree = "<group>"; };
-		34237A971F3AFA9800E6EBFF /* BrouMatrixMultipy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrouMatrixMultipy.m; sourceTree = "<group>"; };
-		34237A991F3AFA9800E6EBFF /* BrouConvolutionConvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BrouConvolutionConvert.c; sourceTree = "<group>"; };
-		34237A9B1F3AFA9800E6EBFF /* BrouConvertFloat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BrouConvertFloat.c; sourceTree = "<group>"; };
-		3452352B1EF6A1E300F6AD53 /* BrouNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouNet.h; sourceTree = "<group>"; };
-		3452352C1EF6A1E300F6AD53 /* BrouNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouNet.m; sourceTree = "<group>"; };
-		34964BAC1F3AFD4C00D669F2 /* BrouMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouMacro.h; sourceTree = "<group>"; };
-		34964BAD1F3AFDB900D669F2 /* BrouMatrix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouMatrix.c; sourceTree = "<group>"; };
-		34F865511ECC446B00354C8D /* libBrouhaha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBrouhaha.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34F8658C1ECC670D00354C8D /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		342BA2D51F55577F0018C6C6 /* BrouAddLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouAddLayer.h; sourceTree = "<group>"; };
+		342BA2D61F55577F0018C6C6 /* BrouAddLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouAddLayer.m; sourceTree = "<group>"; };
+		342BA2D71F555EC60018C6C6 /* BrouAddBiasLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouAddBiasLayer.h; sourceTree = "<group>"; };
+		342BA2D81F555EC60018C6C6 /* BrouAddBiasLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouAddBiasLayer.m; sourceTree = "<group>"; };
+		342BA3191F57DBE70018C6C6 /* BrouBatchNormalizationLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouBatchNormalizationLayer.h; sourceTree = "<group>"; };
+		342BA31A1F57DBE70018C6C6 /* BrouBatchNormalizationLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouBatchNormalizationLayer.m; sourceTree = "<group>"; };
+		34317EA71F5BC4340054B8DC /* BrouTemporaryBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTemporaryBuffer.h; sourceTree = "<group>"; };
+		34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTemporaryBuffer.m; sourceTree = "<group>"; };
+		345EBD481F4A7FF700E746B2 /* BrouConvolutionMMLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvolutionMMLayer.h; sourceTree = "<group>"; };
+		345EBD491F4A7FF800E746B2 /* BrouConvolutionMMLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouConvolutionMMLayer.m; sourceTree = "<group>"; };
+		345EBD551F4AC1EC00E746B2 /* BrouTransposedConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTransposedConvolutionLayer.h; sourceTree = "<group>"; };
+		345EBD561F4AC1EC00E746B2 /* BrouTransposedConvolutionLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTransposedConvolutionLayer.m; sourceTree = "<group>"; };
+		349135971F5FBD8500C2F09C /* BrouTransposedConvolutionMMLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTransposedConvolutionMMLayer.h; sourceTree = "<group>"; };
+		349135981F5FBD8500C2F09C /* BrouTransposedConvolutionMMLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTransposedConvolutionMMLayer.m; sourceTree = "<group>"; };
+		3498F0A21F493713006DF7D1 /* libBrouhaha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBrouhaha.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3498F0B01F493805006DF7D1 /* BrouMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouMacro.h; sourceTree = "<group>"; };
+		3498F0B11F49383A006DF7D1 /* BrouStruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouStruct.h; sourceTree = "<group>"; };
+		3498F0B21F4938EC006DF7D1 /* BrouNeon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouNeon.c; sourceTree = "<group>"; };
+		3498F0B51F493991006DF7D1 /* BrouMatrix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouMatrix.c; sourceTree = "<group>"; };
+		3498F0B61F4939B9006DF7D1 /* BrouGenerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouGenerate.h; sourceTree = "<group>"; };
+		3498F0B71F4939E1006DF7D1 /* BrouUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouUtils.c; sourceTree = "<group>"; };
+		3498F0B91F493A8A006DF7D1 /* BrouUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouUtils.h; sourceTree = "<group>"; };
+		3498F0BA1F493B08006DF7D1 /* BrouConvertType.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BrouConvertType.c; sourceTree = "<group>"; };
+		3498F0BB1F493B08006DF7D1 /* BrouConvertType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvertType.h; sourceTree = "<group>"; };
+		3498F0BF1F493EC0006DF7D1 /* BrouLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouLayer.h; sourceTree = "<group>"; };
+		3498F0C01F493EC0006DF7D1 /* BrouLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouLayer.m; sourceTree = "<group>"; };
+		3498F0C31F494041006DF7D1 /* BrouConvolutionLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouConvolutionLayer.m; sourceTree = "<group>"; };
+		3498F0C41F4941AC006DF7D1 /* BrouConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvolutionLayer.h; sourceTree = "<group>"; };
+		3498F0C61F494298006DF7D1 /* Brouhaha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Brouhaha.h; sourceTree = "<group>"; };
+		3498F0C71F494298006DF7D1 /* Brouhaha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Brouhaha.m; sourceTree = "<group>"; };
+		34C83A5F1F63028700819D44 /* BrouDilatedConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouDilatedConvolutionLayer.h; sourceTree = "<group>"; };
+		34C83A601F63028700819D44 /* BrouDilatedConvolutionLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouDilatedConvolutionLayer.m; sourceTree = "<group>"; };
+		34C83A611F63058200819D44 /* BrouDilatedConvolutionMMLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouDilatedConvolutionMMLayer.h; sourceTree = "<group>"; };
+		34C83A621F63058200819D44 /* BrouDilatedConvolutionMMLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouDilatedConvolutionMMLayer.m; sourceTree = "<group>"; };
+		34F99EF01F4E8E3600261B45 /* BrouPoolingLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouPoolingLayer.h; sourceTree = "<group>"; };
+		34F99EF11F4E8E3600261B45 /* BrouPoolingLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouPoolingLayer.m; sourceTree = "<group>"; };
+		34F99EF21F4E947300261B45 /* BrouMaxPoolingLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouMaxPoolingLayer.h; sourceTree = "<group>"; };
+		34F99EF31F4E947300261B45 /* BrouMaxPoolingLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouMaxPoolingLayer.m; sourceTree = "<group>"; };
+		34F99EF51F4E96D400261B45 /* BrouAveragePoolingLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouAveragePoolingLayer.h; sourceTree = "<group>"; };
+		34F99EF61F4E96D400261B45 /* BrouAveragePoolingLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouAveragePoolingLayer.m; sourceTree = "<group>"; };
+		34F99EF71F4E99B400261B45 /* BrouTanHLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTanHLayer.h; sourceTree = "<group>"; };
+		34F99EF81F4E99B400261B45 /* BrouTanHLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTanHLayer.m; sourceTree = "<group>"; };
+		34F99EF91F4E9B5E00261B45 /* BrouOperateLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouOperateLayer.h; sourceTree = "<group>"; };
+		34F99EFA1F4E9B5E00261B45 /* BrouOperateLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouOperateLayer.m; sourceTree = "<group>"; };
+		34F99EFB1F4EA92A00261B45 /* BrouReLuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouReLuLayer.h; sourceTree = "<group>"; };
+		34F99EFC1F4EA92A00261B45 /* BrouReLuLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouReLuLayer.m; sourceTree = "<group>"; };
+		34F99EFD1F4EA9E700261B45 /* BrouPReLuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouPReLuLayer.h; sourceTree = "<group>"; };
+		34F99EFE1F4EA9E700261B45 /* BrouPReLuLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouPReLuLayer.m; sourceTree = "<group>"; };
+		34F99EFF1F4EAF4F00261B45 /* BrouLinearLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouLinearLayer.h; sourceTree = "<group>"; };
+		34F99F001F4EAF4F00261B45 /* BrouLinearLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouLinearLayer.m; sourceTree = "<group>"; };
+		34F99F011F4EB86300261B45 /* BrouFullConnectLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouFullConnectLayer.h; sourceTree = "<group>"; };
+		34F99F021F4EB86300261B45 /* BrouFullConnectLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouFullConnectLayer.m; sourceTree = "<group>"; };
+		34F99F031F4EC64100261B45 /* BrouConvertLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvertLayer.h; sourceTree = "<group>"; };
+		34F99F041F4EC64100261B45 /* BrouConvertLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouConvertLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		34F8654E1ECC446B00354C8D /* Frameworks */ = {
+		3498F09F1F493713006DF7D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34F8658D1ECC670D00354C8D /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		341E6CC11F3ED8D700C9C684 /* Generate */ = {
+		3498F0991F493713006DF7D1 = {
 			isa = PBXGroup;
 			children = (
-				34964BAD1F3AFDB900D669F2 /* BrouMatrix.c */,
-				341E6CC21F3ED8EC00C9C684 /* BrouUtilsHeaders.h */,
-			);
-			path = Generate;
-			sourceTree = "<group>";
-		};
-		34237A6E1F3AFA9800E6EBFF /* Layers */ = {
-			isa = PBXGroup;
-			children = (
-				34237A7F1F3AFA9800E6EBFF /* BrouLayer.h */,
-				34237A801F3AFA9800E6EBFF /* BrouLayer.m */,
-				34237A771F3AFA9800E6EBFF /* BrouConvolutionLayer.h */,
-				34237A781F3AFA9800E6EBFF /* BrouConvolutionLayer.m */,
-				34237A791F3AFA9800E6EBFF /* BrouConvolutionMMLayer.h */,
-				34237A7A1F3AFA9800E6EBFF /* BrouConvolutionMMLayer.m */,
-				34237A8F1F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.h */,
-				34237A901F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.m */,
-				34237A911F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.h */,
-				34237A921F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.m */,
-				341E6CBA1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.h */,
-				341E6CBB1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.m */,
-				34237A7B1F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.h */,
-				34237A7C1F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.m */,
-				34237A7D1F3AFA9800E6EBFF /* BrouFullConnectLayer.h */,
-				34237A7E1F3AFA9800E6EBFF /* BrouFullConnectLayer.m */,
-				34237A851F3AFA9800E6EBFF /* BrouPoolingLayer.h */,
-				34237A861F3AFA9800E6EBFF /* BrouPoolingLayer.m */,
-				34237A711F3AFA9800E6EBFF /* BrouAveragePoolingLayer.h */,
-				34237A721F3AFA9800E6EBFF /* BrouAveragePoolingLayer.m */,
-				34237A831F3AFA9800E6EBFF /* BrouMaxPoolingLayer.h */,
-				34237A841F3AFA9800E6EBFF /* BrouMaxPoolingLayer.m */,
-				34237A731F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.h */,
-				34237A741F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.m */,
-				34237A6F1F3AFA9800E6EBFF /* BrouAddLayer.h */,
-				34237A701F3AFA9800E6EBFF /* BrouAddLayer.m */,
-				34237A811F3AFA9800E6EBFF /* BrouLinearLayer.h */,
-				34237A821F3AFA9800E6EBFF /* BrouLinearLayer.m */,
-				34237A891F3AFA9800E6EBFF /* BrouReLuLayer.h */,
-				34237A8A1F3AFA9800E6EBFF /* BrouReLuLayer.m */,
-				34237A871F3AFA9800E6EBFF /* BrouPReLuLayer.h */,
-				34237A881F3AFA9800E6EBFF /* BrouPReLuLayer.m */,
-				34237A8D1F3AFA9800E6EBFF /* BrouTanHLayer.h */,
-				34237A8E1F3AFA9800E6EBFF /* BrouTanHLayer.m */,
-				34237A751F3AFA9800E6EBFF /* BrouConvertLayer.h */,
-				34237A761F3AFA9800E6EBFF /* BrouConvertLayer.m */,
-				34237A8B1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.h */,
-				34237A8C1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.m */,
-			);
-			path = Layers;
-			sourceTree = "<group>";
-		};
-		34237A931F3AFA9800E6EBFF /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				34237A941F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.h */,
-				34237A951F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.m */,
-				34237A961F3AFA9800E6EBFF /* BrouMatrixMultipy.h */,
-				34237A971F3AFA9800E6EBFF /* BrouMatrixMultipy.m */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
-		34237A981F3AFA9800E6EBFF /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				34964BAC1F3AFD4C00D669F2 /* BrouMacro.h */,
-				341E6CC71F3EE9B900C9C684 /* BrouNeon.c */,
-				341E6CC81F3EE9B900C9C684 /* BrouNeon.h */,
-				341E6CC11F3ED8D700C9C684 /* Generate */,
-				341E6CC31F3ED9F800C9C684 /* BrouUtils.h */,
-				341E6CC41F3EDAA300C9C684 /* BrouUtils.c */,
-				34237A991F3AFA9800E6EBFF /* BrouConvolutionConvert.c */,
-				34237A9B1F3AFA9800E6EBFF /* BrouConvertFloat.c */,
-				341E6CC61F3EDF9100C9C684 /* BrouConvertFloat.h */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		34F865481ECC446B00354C8D = {
-			isa = PBXGroup;
-			children = (
-				34F865531ECC446B00354C8D /* Brouhaha */,
-				34F865521ECC446B00354C8D /* Products */,
-				34F8658B1ECC670D00354C8D /* Frameworks */,
+				3498F0A41F493713006DF7D1 /* Brouhaha */,
+				3498F0A31F493713006DF7D1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		34F865521ECC446B00354C8D /* Products */ = {
+		3498F0A31F493713006DF7D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34F865511ECC446B00354C8D /* libBrouhaha.a */,
+				3498F0A21F493713006DF7D1 /* libBrouhaha.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		34F865531ECC446B00354C8D /* Brouhaha */ = {
+		3498F0A41F493713006DF7D1 /* Brouhaha */ = {
 			isa = PBXGroup;
 			children = (
-				34237A981F3AFA9800E6EBFF /* Utils */,
-				34237A931F3AFA9800E6EBFF /* Test */,
-				34237A6E1F3AFA9800E6EBFF /* Layers */,
-				3452352B1EF6A1E300F6AD53 /* BrouNet.h */,
-				3452352C1EF6A1E300F6AD53 /* BrouNet.m */,
+				3498F0AF1F4937BD006DF7D1 /* Basic */,
+				3498F0AE1F493775006DF7D1 /* Utils */,
+				3498F0BD1F493DFA006DF7D1 /* Layer */,
 			);
 			path = Brouhaha;
 			sourceTree = "<group>";
 		};
-		34F8658B1ECC670D00354C8D /* Frameworks */ = {
+		3498F0AE1F493775006DF7D1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				34F8658C1ECC670D00354C8D /* Metal.framework */,
+				3498F0B41F49393F006DF7D1 /* Generate */,
+				3498F0B21F4938EC006DF7D1 /* BrouNeon.c */,
+				3498F0BA1F493B08006DF7D1 /* BrouConvertType.c */,
+				3498F0BB1F493B08006DF7D1 /* BrouConvertType.h */,
+				3498F0B91F493A8A006DF7D1 /* BrouUtils.h */,
+				3498F0B71F4939E1006DF7D1 /* BrouUtils.c */,
 			);
-			name = Frameworks;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3498F0AF1F4937BD006DF7D1 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				3498F0B01F493805006DF7D1 /* BrouMacro.h */,
+				3498F0B11F49383A006DF7D1 /* BrouStruct.h */,
+				34317EA71F5BC4340054B8DC /* BrouTemporaryBuffer.h */,
+				34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer.m */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		3498F0B41F49393F006DF7D1 /* Generate */ = {
+			isa = PBXGroup;
+			children = (
+				3498F0B51F493991006DF7D1 /* BrouMatrix.c */,
+				3498F0B61F4939B9006DF7D1 /* BrouGenerate.h */,
+			);
+			path = Generate;
+			sourceTree = "<group>";
+		};
+		3498F0BD1F493DFA006DF7D1 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				3498F0BF1F493EC0006DF7D1 /* BrouLayer.h */,
+				3498F0C01F493EC0006DF7D1 /* BrouLayer.m */,
+				3498F0BE1F493E17006DF7D1 /* Generate */,
+				3498F0C61F494298006DF7D1 /* Brouhaha.h */,
+				3498F0C71F494298006DF7D1 /* Brouhaha.m */,
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		3498F0BE1F493E17006DF7D1 /* Generate */ = {
+			isa = PBXGroup;
+			children = (
+				3498F0C41F4941AC006DF7D1 /* BrouConvolutionLayer.h */,
+				3498F0C31F494041006DF7D1 /* BrouConvolutionLayer.m */,
+				345EBD481F4A7FF700E746B2 /* BrouConvolutionMMLayer.h */,
+				345EBD491F4A7FF800E746B2 /* BrouConvolutionMMLayer.m */,
+				345EBD551F4AC1EC00E746B2 /* BrouTransposedConvolutionLayer.h */,
+				345EBD561F4AC1EC00E746B2 /* BrouTransposedConvolutionLayer.m */,
+				349135971F5FBD8500C2F09C /* BrouTransposedConvolutionMMLayer.h */,
+				349135981F5FBD8500C2F09C /* BrouTransposedConvolutionMMLayer.m */,
+				34C83A5F1F63028700819D44 /* BrouDilatedConvolutionLayer.h */,
+				34C83A601F63028700819D44 /* BrouDilatedConvolutionLayer.m */,
+				34C83A611F63058200819D44 /* BrouDilatedConvolutionMMLayer.h */,
+				34C83A621F63058200819D44 /* BrouDilatedConvolutionMMLayer.m */,
+				34F99EF01F4E8E3600261B45 /* BrouPoolingLayer.h */,
+				34F99EF11F4E8E3600261B45 /* BrouPoolingLayer.m */,
+				34F99EF21F4E947300261B45 /* BrouMaxPoolingLayer.h */,
+				34F99EF31F4E947300261B45 /* BrouMaxPoolingLayer.m */,
+				34F99EF51F4E96D400261B45 /* BrouAveragePoolingLayer.h */,
+				34F99EF61F4E96D400261B45 /* BrouAveragePoolingLayer.m */,
+				34F99EF91F4E9B5E00261B45 /* BrouOperateLayer.h */,
+				34F99EFA1F4E9B5E00261B45 /* BrouOperateLayer.m */,
+				34F99EF71F4E99B400261B45 /* BrouTanHLayer.h */,
+				34F99EF81F4E99B400261B45 /* BrouTanHLayer.m */,
+				34F99EFB1F4EA92A00261B45 /* BrouReLuLayer.h */,
+				34F99EFC1F4EA92A00261B45 /* BrouReLuLayer.m */,
+				34F99EFD1F4EA9E700261B45 /* BrouPReLuLayer.h */,
+				34F99EFE1F4EA9E700261B45 /* BrouPReLuLayer.m */,
+				34F99EFF1F4EAF4F00261B45 /* BrouLinearLayer.h */,
+				34F99F001F4EAF4F00261B45 /* BrouLinearLayer.m */,
+				34F99F011F4EB86300261B45 /* BrouFullConnectLayer.h */,
+				34F99F021F4EB86300261B45 /* BrouFullConnectLayer.m */,
+				34F99F031F4EC64100261B45 /* BrouConvertLayer.h */,
+				34F99F041F4EC64100261B45 /* BrouConvertLayer.m */,
+				342BA2D51F55577F0018C6C6 /* BrouAddLayer.h */,
+				342BA2D61F55577F0018C6C6 /* BrouAddLayer.m */,
+				342BA2D71F555EC60018C6C6 /* BrouAddBiasLayer.h */,
+				342BA2D81F555EC60018C6C6 /* BrouAddBiasLayer.m */,
+				342BA3191F57DBE70018C6C6 /* BrouBatchNormalizationLayer.h */,
+				342BA31A1F57DBE70018C6C6 /* BrouBatchNormalizationLayer.m */,
+			);
+			path = Generate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3450452B1F630E55003666A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3450452C1F630E5A003666A3 /* BrouLayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		34F865501ECC446B00354C8D /* Brouhaha */ = {
+		3498F0A11F493713006DF7D1 /* Brouhaha */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34F8655A1ECC446B00354C8D /* Build configuration list for PBXNativeTarget "Brouhaha" */;
+			buildConfigurationList = 3498F0AB1F493713006DF7D1 /* Build configuration list for PBXNativeTarget "Brouhaha" */;
 			buildPhases = (
-				34F8654D1ECC446B00354C8D /* Sources */,
-				34F8654E1ECC446B00354C8D /* Frameworks */,
-				34F8654F1ECC446B00354C8D /* CopyFiles */,
+				3498F09E1F493713006DF7D1 /* Sources */,
+				3498F09F1F493713006DF7D1 /* Frameworks */,
+				3498F0A01F493713006DF7D1 /* CopyFiles */,
+				3450452B1F630E55003666A3 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Brouhaha;
-			productName = Brouhaha;
-			productReference = 34F865511ECC446B00354C8D /* libBrouhaha.a */;
+			productName = BrouhahaReal;
+			productReference = 3498F0A21F493713006DF7D1 /* libBrouhaha.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		34F865491ECC446B00354C8D /* Project object */ = {
+		3498F09A1F493713006DF7D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = yanyuanchi;
 				TargetAttributes = {
-					34F865501ECC446B00354C8D = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = V7F846A4L3;
-						ProvisioningStyle = Automatic;
+					3498F0A11F493713006DF7D1 = {
+						CreatedOnToolsVersion = 9.0;
 					};
 				};
 			};
-			buildConfigurationList = 34F8654C1ECC446B00354C8D /* Build configuration list for PBXProject "Brouhaha" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			buildConfigurationList = 3498F09D1F493713006DF7D1 /* Build configuration list for PBXProject "Brouhaha" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 34F865481ECC446B00354C8D;
-			productRefGroup = 34F865521ECC446B00354C8D /* Products */;
+			mainGroup = 3498F0991F493713006DF7D1;
+			productRefGroup = 3498F0A31F493713006DF7D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34F865501ECC446B00354C8D /* Brouhaha */,
+				3498F0A11F493713006DF7D1 /* Brouhaha */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		34F8654D1ECC446B00354C8D /* Sources */ = {
+		3498F09E1F493713006DF7D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34237AA81F3AFA9800E6EBFF /* BrouPoolingLayer.m in Sources */,
-				34237AA61F3AFA9800E6EBFF /* BrouLinearLayer.m in Sources */,
-				34237AB21F3AFA9800E6EBFF /* BrouConvertFloat.c in Sources */,
-				34237AAF1F3AFA9800E6EBFF /* BrouMatrixMultiplyX4.m in Sources */,
-				341E6CC51F3EDAA300C9C684 /* BrouUtils.c in Sources */,
-				34237AAD1F3AFA9800E6EBFF /* BrouTransposedConvolutionLayer.m in Sources */,
-				34237AA31F3AFA9800E6EBFF /* BrouDilatedConvolutionMMLayer.m in Sources */,
-				34237AAB1F3AFA9800E6EBFF /* BrouRGBAConvertLayer.m in Sources */,
-				34237A9E1F3AFA9800E6EBFF /* BrouAveragePoolingLayer.m in Sources */,
-				34237AA91F3AFA9800E6EBFF /* BrouPReLuLayer.m in Sources */,
-				34237AA71F3AFA9800E6EBFF /* BrouMaxPoolingLayer.m in Sources */,
-				34237AB01F3AFA9800E6EBFF /* BrouMatrixMultipy.m in Sources */,
-				34237AA21F3AFA9800E6EBFF /* BrouConvolutionMMLayer.m in Sources */,
-				3452352D1EF6A1E300F6AD53 /* BrouNet.m in Sources */,
-				34237AAA1F3AFA9800E6EBFF /* BrouReLuLayer.m in Sources */,
-				34237AA41F3AFA9800E6EBFF /* BrouFullConnectLayer.m in Sources */,
-				34237AB11F3AFA9800E6EBFF /* BrouConvolutionConvert.c in Sources */,
-				341E6CC91F3EE9B900C9C684 /* BrouNeon.c in Sources */,
-				341E6CBC1F3DEAF000C9C684 /* BrouDilatedConvolutionLayer.m in Sources */,
-				34237AA51F3AFA9800E6EBFF /* BrouLayer.m in Sources */,
-				34237AAC1F3AFA9800E6EBFF /* BrouTanHLayer.m in Sources */,
-				34237A9F1F3AFA9800E6EBFF /* BrouBatchNormalizationLayer.m in Sources */,
-				34237A9D1F3AFA9800E6EBFF /* BrouAddLayer.m in Sources */,
-				34237AA11F3AFA9800E6EBFF /* BrouConvolutionLayer.m in Sources */,
-				34237AA01F3AFA9800E6EBFF /* BrouConvertLayer.m in Sources */,
-				34237AAE1F3AFA9800E6EBFF /* BrouTransposedConvolutionMMLayer.m in Sources */,
+				3498F0B31F4938EC006DF7D1 /* BrouNeon.c in Sources */,
+				3498F0B81F4939E1006DF7D1 /* BrouUtils.c in Sources */,
+				3498F0BC1F493B08006DF7D1 /* BrouConvertType.c in Sources */,
+				34317EA91F5BC4340054B8DC /* BrouTemporaryBuffer.m in Sources */,
+				34F99EF41F4E95B700261B45 /* BrouLayer.m in Sources */,
+				3498F0C81F494298006DF7D1 /* Brouhaha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		34F865581ECC446B00354C8D /* Debug */ = {
+		3498F0A91F493713006DF7D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -345,16 +312,21 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -370,25 +342,24 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				MTL_FAST_MATH = YES;
-				MTL_LANGUAGE_REVISION = Metal12;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
-		34F865591ECC446B00354C8D /* Release */ = {
+		3498F0AA1F493713006DF7D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -396,16 +367,21 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -415,61 +391,55 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				MTL_LANGUAGE_REVISION = Metal12;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
-		34F8655B1ECC446B00354C8D /* Debug */ = {
+		3498F0AC1F493713006DF7D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V7F846A4L3;
-				HEADER_SEARCH_PATHS = "./**";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		34F8655C1ECC446B00354C8D /* Release */ = {
+		3498F0AD1F493713006DF7D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V7F846A4L3;
-				GCC_OPTIMIZATION_LEVEL = s;
-				HEADER_SEARCH_PATHS = "./**";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34F8654C1ECC446B00354C8D /* Build configuration list for PBXProject "Brouhaha" */ = {
+		3498F09D1F493713006DF7D1 /* Build configuration list for PBXProject "Brouhaha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				34F865581ECC446B00354C8D /* Debug */,
-				34F865591ECC446B00354C8D /* Release */,
+				3498F0A91F493713006DF7D1 /* Debug */,
+				3498F0AA1F493713006DF7D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34F8655A1ECC446B00354C8D /* Build configuration list for PBXNativeTarget "Brouhaha" */ = {
+		3498F0AB1F493713006DF7D1 /* Build configuration list for PBXNativeTarget "Brouhaha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				34F8655B1ECC446B00354C8D /* Debug */,
-				34F8655C1ECC446B00354C8D /* Release */,
+				3498F0AC1F493713006DF7D1 /* Debug */,
+				3498F0AD1F493713006DF7D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 34F865491ECC446B00354C8D /* Project object */;
+	rootObject = 3498F09A1F493713006DF7D1 /* Project object */;
 }

@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Brouhaha-Demo/Brouhaha-Demo.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:BrouhahaMetal/BrouhahaMetal.xcodeproj">
+      location = "group:BrouhahaDemo/BrouhahaDemo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Brouhaha/Brouhaha.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:BrouhahaMetal/BrouhahaMetal.xcodeproj">
    </FileRef>
 </Workspace>

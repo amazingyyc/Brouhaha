@@ -6,196 +6,116 @@
  *
  * the fullconnet operate
  */
-
-#include <metal_stdlib>
-
-using namespace metal;
-
-/**the input's dimension (inputChannel, 1)*/
-constant int inputChannel[[function_constant(0)]];
-
-/**the output's dimension (outputChannel, 1)*/
-constant int outputChannel[[function_constant(1)]];
-
-constant int inputChannelX4[[function_constant(2)]];
-constant int outputChannelX4[[function_constant(3)]];
+#if defined(real) && defined(real4) && defined(BROU)
 
 /**
  * every thread will deal with 4 output
- * the input's dimesnion is (inputChannelX4, 1)
- * the output's dimension is (outputChannelX4, 1)
- * the weigths's dimesnion is (outputChannelX4, inputChannelX4)
- * the bias's dimension is (outputChannelX4, 1)
+ * the input's dimesnion is (inputChannel, 1)
+ * the output's dimension is (outputChannel, 1)
+ * the weigths's dimesnion is (outputChannel, inputChannel)
+ * the bias's dimension is (outputChannel, 1)
+ *
+ * inputchannel and outputchannel time by 4
  */
-kernel void brouFullconnectBlock(device half *input      [[buffer(0)]],
-                                 device half *weights    [[buffer(1)]],
-                                 device half *bia        [[buffer(2)]],
-                                 device half *output     [[buffer(3)]],
-                                 ushort grid [[thread_position_in_grid]]) {
+kernel void BROU(Fullconnect)(device real *input             [[buffer(0)]],
+                              device real *weights           [[buffer(1)]],
+                              device real *bia               [[buffer(2)]],
+                              device real *output            [[buffer(3)]],
+                              constant TensorShape& shape    [[buffer(4)]],
+                              ushort grid [[thread_position_in_grid]]) {
+    int inputChannel  = shape.dim0;
+    int outputChannel = shape.dim1;
+    
     int index = grid << 2;
-
+    
     if (index >= outputChannel) {
         return;
     }
-
-    device half4 *inputV   = (device half4*)input;
-    device half4 *weightsV = (device half4*)(weights + inputChannelX4 * index);
-
-    half4 out = 0;
-    half4 in, wei0, wei1, wei2, wei3;
-
-    int loopCount = (inputChannel + 3) / 4;
-
+    
+    real4 out = 0;
+    real4 in;
+    
+    device real4 *inputV = (device real4*)input;
+    
+    device real4 *offset0 = (device real4*)(weights + inputChannel * index);
+    device real4 *offset1 = (device real4*)(((device real*)offset0) + inputChannel);
+    device real4 *offset2 = (device real4*)(((device real*)offset1) + inputChannel);
+    device real4 *offset3 = (device real4*)(((device real*)offset2) + inputChannel);
+    
+    int loop = inputChannel / 4;
+    
     do {
         in = inputV[0];
-
-        device half4 *weightsVOffset = weightsV;
-
-        wei0 = weightsVOffset[0]; weightsVOffset = (device half4*)((device half*)weightsVOffset + inputChannelX4);
-        wei1 = weightsVOffset[0]; weightsVOffset = (device half4*)((device half*)weightsVOffset + inputChannelX4);
-        wei2 = weightsVOffset[0]; weightsVOffset = (device half4*)((device half*)weightsVOffset + inputChannelX4);
-        wei3 = weightsVOffset[0];
-
-        out.x += dot(in, wei0);
-        out.y += dot(in, wei1);
-        out.z += dot(in, wei2);
-        out.w += dot(in, wei3);
-
-        inputV++;
-        weightsV++;
-    } while(--loopCount);
-
-    device half4 *outputV = (device half4*)(output + index);
-    device half4 *biaV    = (device half4*)(bia + index);
-
+        
+        out.x += dot(in, offset0[0]);
+        out.y += dot(in, offset1[0]);
+        out.z += dot(in, offset2[0]);
+        out.w += dot(in, offset3[0]);
+        
+        inputV = (device real4*)(((device real*)inputV) + 4);
+        
+        offset0 = (device real4*)(((device real*)offset0) + 4);
+        offset1 = (device real4*)(((device real*)offset1) + 4);
+        offset2 = (device real4*)(((device real*)offset2) + 4);
+        offset3 = (device real4*)(((device real*)offset3) + 4);
+    } while(--loop);
+    
+    device real4 *outputV = (device real4*)(output + index);
+    device real4 *biaV    = (device real4*)(bia + index);
+    
     outputV[0] = out + biaV[0];
 }
 
-
-kernel void brouFullconnectBlockWithoutBias(device half *input      [[buffer(0)]],
-                                            device half *weights    [[buffer(1)]],
-                                            device half *output     [[buffer(2)]],
-                                            ushort grid [[thread_position_in_grid]]) {
+kernel void BROU(FullconnectWithoutBias)(device real *input             [[buffer(0)]],
+                                         device real *weights           [[buffer(1)]],
+                                         device real *output            [[buffer(2)]],
+                                         constant TensorShape& shape    [[buffer(3)]],
+                                         ushort grid [[thread_position_in_grid]]) {
+    int inputChannel  = shape.dim0;
+    int outputChannel = shape.dim1;
+    
     int index = grid << 2;
-
+    
     if (index >= outputChannel) {
         return;
     }
-
-    device half4 *inputV   = (device half4*)input;
-    device half4 *weightsV = (device half4*)(weights + inputChannelX4 * index);
-
-    half4 out = 0;
-    half4 in, wei0, wei1, wei2, wei3;
-
-    int loopCount = (inputChannel + 3) / 4;
-
+    
+    real4 out = 0;
+    real4 in;
+    
+    device real4 *inputV = (device real4*)input;
+    
+    device real4 *offset0 = (device real4*)(weights + inputChannel * index);
+    device real4 *offset1 = (device real4*)(((device real*)offset0) + inputChannel);
+    device real4 *offset2 = (device real4*)(((device real*)offset1) + inputChannel);
+    device real4 *offset3 = (device real4*)(((device real*)offset2) + inputChannel);
+    
+    int loop = inputChannel / 4;
+    
     do {
         in = inputV[0];
-
-        device half4 *weightsVOffset = weightsV;
-
-        wei0 = weightsVOffset[0]; weightsVOffset = (device half4*)((device half*)weightsVOffset + inputChannelX4);
-        wei1 = weightsVOffset[0]; weightsVOffset = (device half4*)((device half*)weightsVOffset + inputChannelX4);
-        wei2 = weightsVOffset[0]; weightsVOffset = (device half4*)((device half*)weightsVOffset + inputChannelX4);
-        wei3 = weightsVOffset[0];
-
-        out.x += dot(in, wei0);
-        out.y += dot(in, wei1);
-        out.z += dot(in, wei2);
-        out.w += dot(in, wei3);
-
-        inputV++;
-        weightsV++;
-    } while(--loopCount);
-
-    device half4 *outputV = (device half4*)(output + index);
-
+        
+        out.x += dot(in, offset0[0]);
+        out.y += dot(in, offset0[0]);
+        out.z += dot(in, offset0[0]);
+        out.w += dot(in, offset0[0]);
+        
+        inputV = (device real4*)(((device real*)inputV) + 4);
+        
+        offset0 = (device real4*)(((device real*)offset0) + 4);
+        offset1 = (device real4*)(((device real*)offset1) + 4);
+        offset2 = (device real4*)(((device real*)offset2) + 4);
+        offset3 = (device real4*)(((device real*)offset3) + 4);
+    } while(--loop);
+    
+    device real4 *outputV = (device real4*)(output + index);
+    
     outputV[0] = out;
 }
 
-/***************************************************************************************/
-/**for test*/
-/***************************************************************************************/
+#endif
 
-/**
- * the weight's diemension is (outputChannel, inputChannel)
- * the weight is row-major matrix
- * the bias's dimension is (outputChannle, 1)
- */
 
-kernel void brouFullconnect(device half *input      [[buffer(0)]],
-                            device half *weights    [[buffer(1)]],
-                            device half *bia        [[buffer(2)]],
-                            device half *output     [[buffer(3)]],
-                            uint grid [[thread_position_in_grid]]) {
-    if (grid >= outputChannel) {
-        return;
-    }
-
-    device half *inputData   = input;
-    device half *weightsData = weights + grid * inputChannel;
-
-    half sum0 = 0;
-    half sum1 = 0;
-    half sum2 = 0;
-    half sum3 = 0;
-
-    int limit = inputChannel - 3;
-
-    int i = 0;
-    for (; i < limit; i += 4) {
-        sum0 += inputData[i] * weightsData[i];
-        sum1 += inputData[i + 1] * weightsData[i + 1];
-        sum2 += inputData[i + 2] * weightsData[i + 2];
-        sum3 += inputData[i + 3] * weightsData[i + 3];
-    }
-
-    for (; i < inputChannel; ++i) {
-        sum0 += inputData[i] * weightsData[i];
-    }
-
-    output[grid] = sum0 + sum1 + sum2 + sum3 + bia[grid];
-}
-
-/**
- * the weight's diemension is (outputChannel, inputChannel)
- * the weight is row-major matrix
- * the bias's dimension is (outputChannle, 1)
- */
-
-kernel void brouFullconnectWithoutBias(device half *input      [[buffer(0)]],
-                                       device half *weights    [[buffer(1)]],
-                                       device half *output     [[buffer(2)]],
-                                       uint grid [[thread_position_in_grid]]) {
-    if (grid >= outputChannel) {
-        return;
-    }
-
-    device half *inputData   = input;
-    device half *weightsData = weights + grid * inputChannel;
-
-    half sum0 = 0;
-    half sum1 = 0;
-    half sum2 = 0;
-    half sum3 = 0;
-
-    int limit = inputChannel - 3;
-
-    int i = 0;
-    for (; i < limit; i += 4) {
-        sum0 += inputData[i] * weightsData[i];
-        sum1 += inputData[i + 1] * weightsData[i + 1];
-        sum2 += inputData[i + 2] * weightsData[i + 2];
-        sum3 += inputData[i + 3] * weightsData[i + 3];
-    }
-
-    for (; i < inputChannel; ++i) {
-        sum0 += inputData[i] * weightsData[i];
-    }
-
-    output[grid] = sum0 + sum1 + sum2 + sum3;
-}
 
 
 

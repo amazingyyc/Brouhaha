@@ -6,27 +6,16 @@
  *
  * the linear operate
  */
-
-#include <metal_stdlib>
-#include <metal_math>
-
-#include "BrouStruct.metal"
-
-using namespace metal;
+#if defined(real) && defined(real4) && defined(BROU)
 
 /**
  * f(x) = a * x + b
  */
-typedef struct {
-    half a;
-    half b;
-} AB;
-
-kernel void brouLinear1D(device half *input          [[buffer(0)]],
-                         device half *output         [[buffer(1)]],
-                         constant AB& ab             [[buffer(2)]],
-                         constant TensorShape& shape [[buffer(3)]],
-                         ushort grid [[thread_position_in_grid]]) {
+kernel void BROU(Linear1D)(device real *input          [[buffer(0)]],
+                           device real *output         [[buffer(1)]],
+                           device real *ab             [[buffer(2)]],
+                           constant TensorShape& shape [[buffer(3)]],
+                           ushort grid [[thread_position_in_grid]]) {
     int len = shape.dim0;
     
     int index = grid << 2;
@@ -35,22 +24,17 @@ kernel void brouLinear1D(device half *input          [[buffer(0)]],
         return;
     }
     
-    half a = ab.a;
-    half b = ab.b;
+    device real4 *inputV  = (device real4*)(input  + index);
+    device real4 *outputV = (device real4*)(output + index);
     
-    device half4 *inputV  = (device half4*)(input  + index);
-    device half4 *outputV = (device half4*)(output + index);
-    
-    half4 bV = {b, b, b, b};
-    
-    outputV[0] = a * inputV[0] + bV;
+    outputV[0] = ab[0] * inputV[0] + ab[1];
 }
 
-kernel void brouLinear2D(device half *input          [[buffer(0)]],
-                         device half *output         [[buffer(1)]],
-                         constant AB& ab             [[buffer(2)]],
-                         constant TensorShape& shape [[buffer(3)]],
-                         ushort2 grid [[thread_position_in_grid]]) {
+kernel void BROU(Linear2D)(device real *input          [[buffer(0)]],
+                           device real *output         [[buffer(1)]],
+                           device real *ab             [[buffer(2)]],
+                           constant TensorShape& shape [[buffer(3)]],
+                           ushort2 grid [[thread_position_in_grid]]) {
     /**the width must be timed by 4*/
     int height = shape.dim0;
     int width  = shape.dim1;
@@ -61,27 +45,22 @@ kernel void brouLinear2D(device half *input          [[buffer(0)]],
     if (x >= width || y >= height) {
         return;
     }
-
-    half a = ab.a;
-    half b = ab.b;
-    
-    half4 bV = {b, b, b, b};
     
     int maxJ = min(y + 4, height);
     
     for (int j = y; j < maxJ; ++j) {
-        device half4 *inputV  = (device half4*)(input  + j * width + x);
-        device half4 *outputV = (device half4*)(output + j * width + x);
+        device real4 *inputV  = (device real4*)(input  + j * width + x);
+        device real4 *outputV = (device real4*)(output + j * width + x);
         
-        outputV[0] = a * inputV[0] + bV;
+        outputV[0] = ab[0] * inputV[0] + ab[1];
     }
 }
 
-kernel void brouLinear3D(device half *input          [[buffer(0)]],
-                         device half *output         [[buffer(1)]],
-                         constant AB& ab             [[buffer(2)]],
-                         constant TensorShape& shape [[buffer(3)]],
-                         ushort3 grid [[thread_position_in_grid]]) {
+kernel void BROU(Linear3D)(device real *input          [[buffer(0)]],
+                           device real *output         [[buffer(1)]],
+                           device real *ab             [[buffer(2)]],
+                           constant TensorShape& shape [[buffer(3)]],
+                           ushort3 grid [[thread_position_in_grid]]) {
     /**the channel must be timed by 4*/
     int height  = shape.dim0;
     int width   = shape.dim1;
@@ -95,11 +74,6 @@ kernel void brouLinear3D(device half *input          [[buffer(0)]],
         return;
     }
     
-    half a = ab.a;
-    half b = ab.b;
-    
-    half4 bV = b;
-    
     int maxJ = min(y + 4, height);
     int maxI = min(x + 4, width);
     
@@ -107,21 +81,15 @@ kernel void brouLinear3D(device half *input          [[buffer(0)]],
         for (int i = x; i < maxI; ++i) {
             int offset = (j * width + i) * channel + z;
             
-            device half4 *inputV  = (device half4*)(input  + offset);
-            device half4 *outputV = (device half4*)(output + offset);
-
-            outputV[0] = a * inputV[0] + bV;
+            device real4 *inputV  = (device real4*)(input  + offset);
+            device real4 *outputV = (device real4*)(output + offset);
+            
+            outputV[0] = ab[0] * inputV[0] + ab[1];
         }
     }
 }
 
-
-
-
-
-
-
-
+#endif
 
 
 

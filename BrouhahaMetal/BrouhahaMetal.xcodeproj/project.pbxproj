@@ -7,48 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		340953401EED516400A42115 /* BrouConvolutionMM.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3409533F1EED516400A42115 /* BrouConvolutionMM.metal */; };
-		342A35991F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal in Sources */ = {isa = PBXBuildFile; fileRef = 342A35981F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal */; };
-		343452701F1E09F3007DBA81 /* BrouAdd.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3434526F1F1E09F3007DBA81 /* BrouAdd.metal */; };
-		3463FF741ED18A44003D7F2C /* BrouConvolution.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF6E1ED18A44003D7F2C /* BrouConvolution.metal */; };
-		3463FF751ED18A44003D7F2C /* BrouFullconnect.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF6F1ED18A44003D7F2C /* BrouFullconnect.metal */; };
-		3463FF761ED18A44003D7F2C /* BrouPooling.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF701ED18A44003D7F2C /* BrouPooling.metal */; };
-		3463FF771ED18A44003D7F2C /* BrouLinear.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF711ED18A44003D7F2C /* BrouLinear.metal */; };
-		3463FF781ED18A44003D7F2C /* BrouReLu.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF721ED18A44003D7F2C /* BrouReLu.metal */; };
-		3463FF791ED18A44003D7F2C /* BrouTanH.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF731ED18A44003D7F2C /* BrouTanH.metal */; };
-		3463FF811ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3463FF801ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal */; };
-		348B4C0D1F24DF1800F674A1 /* BrouStruct.metal in Sources */ = {isa = PBXBuildFile; fileRef = 348B4C0C1F24DF1800F674A1 /* BrouStruct.metal */; };
-		34A686E31F15B94A00C8EAD7 /* BrouBatchNormalization.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34A686E21F15B94A00C8EAD7 /* BrouBatchNormalization.metal */; };
-		34A72CB41F3C7C8D00EEED95 /* BrouDilatedConvolution.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34A72CB31F3C7C8D00EEED95 /* BrouDilatedConvolution.metal */; };
-		34B62EFB1F2762E900A5857B /* BrouRGBAImageConvert.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34B62EFA1F2762E900A5857B /* BrouRGBAImageConvert.metal */; };
-		34C884861F2AD98000DC309C /* BrouPReLu.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34C884851F2AD98000DC309C /* BrouPReLu.metal */; };
-		34D21CE21EFF80C200109A5E /* BrouConvert.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34D21CE11EFF80C200109A5E /* BrouConvert.metal */; };
-		34F6229A1F0659DB00046494 /* BrouDilatedConvolutionMM.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34F622991F0659DB00046494 /* BrouDilatedConvolutionMM.metal */; };
-		34F6229C1F0887F300046494 /* BrouTransposedConvolutionMM.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34F6229B1F0887F300046494 /* BrouTransposedConvolutionMM.metal */; };
-		34F6229E1F089BA700046494 /* BrouMatrixMultiply.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34F6229D1F089BA700046494 /* BrouMatrixMultiply.metal */; };
+		34D248141F41AA6D00B64BFF /* BrouGenerate.metal in Sources */ = {isa = PBXBuildFile; fileRef = 34D248131F41AA6D00B64BFF /* BrouGenerate.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3409533F1EED516400A42115 /* BrouConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvolutionMM.metal; sourceTree = "<group>"; };
-		342A35981F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTransposedConvolution.metal; sourceTree = "<group>"; };
-		3434526F1F1E09F3007DBA81 /* BrouAdd.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouAdd.metal; sourceTree = "<group>"; };
-		3463FF641ED18A2D003D7F2C /* BrouhahaMetal.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = BrouhahaMetal.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
-		3463FF6E1ED18A44003D7F2C /* BrouConvolution.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouConvolution.metal; sourceTree = "<group>"; };
-		3463FF6F1ED18A44003D7F2C /* BrouFullconnect.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouFullconnect.metal; sourceTree = "<group>"; };
-		3463FF701ED18A44003D7F2C /* BrouPooling.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouPooling.metal; sourceTree = "<group>"; };
-		3463FF711ED18A44003D7F2C /* BrouLinear.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouLinear.metal; sourceTree = "<group>"; };
-		3463FF721ED18A44003D7F2C /* BrouReLu.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouReLu.metal; sourceTree = "<group>"; };
-		3463FF731ED18A44003D7F2C /* BrouTanH.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouTanH.metal; sourceTree = "<group>"; };
+		341CF7401F46BED00010F9F9 /* BrouTransposedConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTransposedConvolutionMM.metal; sourceTree = "<group>"; };
+		341CF7411F46C8E40010F9F9 /* BrouDilatedConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouDilatedConvolutionMM.metal; sourceTree = "<group>"; };
+		341CF76E1F46E5D50010F9F9 /* BrouConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvolution.metal; sourceTree = "<group>"; };
+		3463FF641ED18A2D003D7F2C /* BrouhahaMetal.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; fileEncoding = 4; includeInIndex = 0; path = BrouhahaMetal.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3463FF801ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BrouMatrixMultiplyFloat32.metal; sourceTree = "<group>"; };
+		348102921F42EEAE00E24DF1 /* BrouMatrixMultiply.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouMatrixMultiply.metal; sourceTree = "<group>"; };
+		348102931F42F1B700E24DF1 /* BrouConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvolutionMM.metal; sourceTree = "<group>"; };
 		348B4C0C1F24DF1800F674A1 /* BrouStruct.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouStruct.metal; sourceTree = "<group>"; };
-		34A686E21F15B94A00C8EAD7 /* BrouBatchNormalization.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouBatchNormalization.metal; sourceTree = "<group>"; };
-		34A72CB31F3C7C8D00EEED95 /* BrouDilatedConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouDilatedConvolution.metal; sourceTree = "<group>"; };
-		34B62EFA1F2762E900A5857B /* BrouRGBAImageConvert.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouRGBAImageConvert.metal; sourceTree = "<group>"; };
-		34C884851F2AD98000DC309C /* BrouPReLu.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouPReLu.metal; sourceTree = "<group>"; };
-		34D21CE11EFF80C200109A5E /* BrouConvert.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvert.metal; sourceTree = "<group>"; };
-		34F622991F0659DB00046494 /* BrouDilatedConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouDilatedConvolutionMM.metal; sourceTree = "<group>"; };
-		34F6229B1F0887F300046494 /* BrouTransposedConvolutionMM.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTransposedConvolutionMM.metal; sourceTree = "<group>"; };
-		34F6229D1F089BA700046494 /* BrouMatrixMultiply.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouMatrixMultiply.metal; sourceTree = "<group>"; };
+		3498F08F1F4812B9006DF7D1 /* BrouTransposedConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTransposedConvolution.metal; sourceTree = "<group>"; };
+		3498F0901F481446006DF7D1 /* BrouDilatedConvolution.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouDilatedConvolution.metal; sourceTree = "<group>"; };
+		3498F0911F4820FE006DF7D1 /* BrouFullconnect.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouFullconnect.metal; sourceTree = "<group>"; };
+		3498F0931F482710006DF7D1 /* BrouAveragePooling.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouAveragePooling.metal; sourceTree = "<group>"; };
+		3498F0941F482B13006DF7D1 /* BrouLinear.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouLinear.metal; sourceTree = "<group>"; };
+		3498F0951F482D74006DF7D1 /* BrouReLu.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouReLu.metal; sourceTree = "<group>"; };
+		3498F0961F482E91006DF7D1 /* BrouPReLu.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouPReLu.metal; sourceTree = "<group>"; };
+		3498F0971F486B2C006DF7D1 /* BrouConvert.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvert.metal; sourceTree = "<group>"; };
+		3498F0981F487ABC006DF7D1 /* BrouBatchNormalization.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouBatchNormalization.metal; sourceTree = "<group>"; };
+		34D2480F1F419EA700B64BFF /* BrouMacro.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouMacro.metal; sourceTree = "<group>"; };
+		34D248111F41AA5800B64BFF /* BrouTanH.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTanH.metal; sourceTree = "<group>"; };
+		34D248131F41AA6D00B64BFF /* BrouGenerate.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouGenerate.metal; sourceTree = "<group>"; };
+		34D248151F41C7B700B64BFF /* BrouAdd.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouAdd.metal; sourceTree = "<group>"; };
+		34D248161F41D16500B64BFF /* BrouMaxPooling.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouMaxPooling.metal; sourceTree = "<group>"; };
+		34DB84601F544C2F00F0ADDB /* BrouAddBias.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouAddBias.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -72,23 +57,26 @@
 			isa = PBXGroup;
 			children = (
 				348B4C0C1F24DF1800F674A1 /* BrouStruct.metal */,
-				3463FF6E1ED18A44003D7F2C /* BrouConvolution.metal */,
-				3409533F1EED516400A42115 /* BrouConvolutionMM.metal */,
-				342A35981F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal */,
-				34F6229B1F0887F300046494 /* BrouTransposedConvolutionMM.metal */,
-				34A72CB31F3C7C8D00EEED95 /* BrouDilatedConvolution.metal */,
-				34F622991F0659DB00046494 /* BrouDilatedConvolutionMM.metal */,
-				34F6229D1F089BA700046494 /* BrouMatrixMultiply.metal */,
-				34A686E21F15B94A00C8EAD7 /* BrouBatchNormalization.metal */,
-				3463FF6F1ED18A44003D7F2C /* BrouFullconnect.metal */,
-				3463FF701ED18A44003D7F2C /* BrouPooling.metal */,
-				3463FF711ED18A44003D7F2C /* BrouLinear.metal */,
-				3463FF721ED18A44003D7F2C /* BrouReLu.metal */,
-				34C884851F2AD98000DC309C /* BrouPReLu.metal */,
-				3463FF731ED18A44003D7F2C /* BrouTanH.metal */,
-				3434526F1F1E09F3007DBA81 /* BrouAdd.metal */,
-				34B62EFA1F2762E900A5857B /* BrouRGBAImageConvert.metal */,
-				34D21CE11EFF80C200109A5E /* BrouConvert.metal */,
+				34D2480F1F419EA700B64BFF /* BrouMacro.metal */,
+				341CF76E1F46E5D50010F9F9 /* BrouConvolution.metal */,
+				348102931F42F1B700E24DF1 /* BrouConvolutionMM.metal */,
+				3498F08F1F4812B9006DF7D1 /* BrouTransposedConvolution.metal */,
+				341CF7401F46BED00010F9F9 /* BrouTransposedConvolutionMM.metal */,
+				3498F0901F481446006DF7D1 /* BrouDilatedConvolution.metal */,
+				341CF7411F46C8E40010F9F9 /* BrouDilatedConvolutionMM.metal */,
+				348102921F42EEAE00E24DF1 /* BrouMatrixMultiply.metal */,
+				3498F0911F4820FE006DF7D1 /* BrouFullconnect.metal */,
+				34D248111F41AA5800B64BFF /* BrouTanH.metal */,
+				34D248151F41C7B700B64BFF /* BrouAdd.metal */,
+				34DB84601F544C2F00F0ADDB /* BrouAddBias.metal */,
+				34D248161F41D16500B64BFF /* BrouMaxPooling.metal */,
+				3498F0931F482710006DF7D1 /* BrouAveragePooling.metal */,
+				3498F0941F482B13006DF7D1 /* BrouLinear.metal */,
+				3498F0951F482D74006DF7D1 /* BrouReLu.metal */,
+				3498F0961F482E91006DF7D1 /* BrouPReLu.metal */,
+				3498F0981F487ABC006DF7D1 /* BrouBatchNormalization.metal */,
+				3498F0971F486B2C006DF7D1 /* BrouConvert.metal */,
+				34D248131F41AA6D00B64BFF /* BrouGenerate.metal */,
 				3463FF801ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal */,
 			);
 			path = BrouhahaMetal;
@@ -150,25 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				348B4C0D1F24DF1800F674A1 /* BrouStruct.metal in Sources */,
-				34F6229E1F089BA700046494 /* BrouMatrixMultiply.metal in Sources */,
-				3463FF771ED18A44003D7F2C /* BrouLinear.metal in Sources */,
-				34B62EFB1F2762E900A5857B /* BrouRGBAImageConvert.metal in Sources */,
-				34F6229C1F0887F300046494 /* BrouTransposedConvolutionMM.metal in Sources */,
-				34D21CE21EFF80C200109A5E /* BrouConvert.metal in Sources */,
-				34F6229A1F0659DB00046494 /* BrouDilatedConvolutionMM.metal in Sources */,
-				342A35991F2D8B9900E9FDC0 /* BrouTransposedConvolution.metal in Sources */,
-				3463FF741ED18A44003D7F2C /* BrouConvolution.metal in Sources */,
-				34A72CB41F3C7C8D00EEED95 /* BrouDilatedConvolution.metal in Sources */,
-				3463FF811ED1AD0A003D7F2C /* BrouMatrixMultiplyFloat32.metal in Sources */,
-				3463FF761ED18A44003D7F2C /* BrouPooling.metal in Sources */,
-				34A686E31F15B94A00C8EAD7 /* BrouBatchNormalization.metal in Sources */,
-				3463FF751ED18A44003D7F2C /* BrouFullconnect.metal in Sources */,
-				340953401EED516400A42115 /* BrouConvolutionMM.metal in Sources */,
-				343452701F1E09F3007DBA81 /* BrouAdd.metal in Sources */,
-				3463FF791ED18A44003D7F2C /* BrouTanH.metal in Sources */,
-				34C884861F2AD98000DC309C /* BrouPReLu.metal in Sources */,
-				3463FF781ED18A44003D7F2C /* BrouReLu.metal in Sources */,
+				34D248141F41AA6D00B64BFF /* BrouGenerate.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

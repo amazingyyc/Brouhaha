@@ -13,9 +13,10 @@ using namespace metal;
  * (dim0 dim1 dim2) represent a 3d tensor
  */
 typedef struct {
-    int32_t dim0;
-    int32_t dim1;
-    int32_t dim2;
+    int dim0;
+    int dim1;
+    int dim2;
+    int dim3;
 } TensorShape;
 
 /**
@@ -23,24 +24,24 @@ typedef struct {
  */
 typedef struct {
     /**the kernel size*/
-    int32_t kernelHeight;
-    int32_t kernelWidth;
+    int kernelHeight;
+    int kernelWidth;
     
     /**the pad of input*/
-    int32_t padTop;
-    int32_t padLeft;
+    int padTop;
+    int padLeft;
     
     /**the stride of kernel, for transposed convolution always be 1*/
-    int32_t strideY;
-    int32_t strideX;
+    int strideY;
+    int strideX;
     
     /**the 0 units inserted to input of transposed convolution*/
-    int32_t insertY;
-    int32_t insertX;
+    int insertY;
+    int insertX;
     
     /**for dilated convolution*/
-    int32_t dilatedY;
-    int32_t dilatedX;
+    int dilatedY;
+    int dilatedX;
     
     /**if the convoluton has bias*/
     bool haveBias;

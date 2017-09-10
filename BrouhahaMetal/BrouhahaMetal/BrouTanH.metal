@@ -1,33 +1,29 @@
 /**
- * Brouhaha
- * convolution.metal
- * Created by yanyuanchi on 2017/5/15.
+ * BrouhahaMetal
+ *
+ * Created by yanyuanchi on 2017/8/14.
  * Copyright © 2017年 yanyuanchi. All rights reserved.
  *
- * the tanh operate
+ * the TanH operate,
  */
 
-#include <metal_stdlib>
-
-#include "BrouStruct.metal"
-
-using namespace metal;
+#if defined(real) && defined(real4) && defined(BROU)
 
 /**
  * for 1d shape every thread output 1X4
  */
-kernel void brouTanH1D(device half *input           [[buffer(0)]],
-                       device half *output          [[buffer(1)]],
-                       constant TensorShape& shape  [[buffer(2)]],
-                       ushort grid [[thread_position_in_grid]]) {
+kernel void BROU(TanH1D)(device real *input           [[buffer(0)]],
+                         device real *output          [[buffer(1)]],
+                         constant TensorShape& shape  [[buffer(2)]],
+                         ushort grid [[thread_position_in_grid]]) {
     int index = grid << 2;
     
     if (index >= shape.dim0) {
         return;
     }
     
-    device half4 *inputV  = (device half4*)(input  + index);
-    device half4 *outputV = (device half4*)(output + index);
+    device real4 *inputV  = (device real4*)(input  + index);
+    device real4 *outputV = (device real4*)(output + index);
     
     outputV[0] = tanh(inputV[0]);
 }
@@ -36,10 +32,10 @@ kernel void brouTanH1D(device half *input           [[buffer(0)]],
  * every thread output 4X4 block
  * the width is timed by 4
  */
-kernel void brouTanH2D(device half *input           [[buffer(0)]],
-                       device half *output          [[buffer(1)]],
-                       constant TensorShape& shape  [[buffer(2)]],
-                       ushort2 grid [[thread_position_in_grid]]) {
+kernel void BROU(TanH2D)(device real *input           [[buffer(0)]],
+                         device real *output          [[buffer(1)]],
+                         constant TensorShape& shape  [[buffer(2)]],
+                         ushort2 grid [[thread_position_in_grid]]) {
     int height = shape.dim0;
     int width  = shape.dim1;
     
@@ -55,8 +51,8 @@ kernel void brouTanH2D(device half *input           [[buffer(0)]],
     for (int j = y; j < maxJ; ++j) {
         int offset = j * width + x;
         
-        device half4 *inputV  = (device half4*)(input  + offset);
-        device half4 *outputV = (device half4*)(output + offset);
+        device real4 *inputV  = (device real4*)(input  + offset);
+        device real4 *outputV = (device real4*)(output + offset);
         
         outputV[0] = tanh(inputV[0]);
     }
@@ -66,10 +62,10 @@ kernel void brouTanH2D(device half *input           [[buffer(0)]],
  * every thread output 4X4X4 block
  * the channel must be timed by 4
  */
-kernel void brouTanH3D(device half *input           [[buffer(0)]],
-                       device half *output          [[buffer(1)]],
-                       constant TensorShape& shape  [[buffer(2)]],
-                       ushort3 grid [[thread_position_in_grid]]) {
+kernel void BROU(TanH3D)(device real *input           [[buffer(0)]],
+                         device real *output          [[buffer(1)]],
+                         constant TensorShape& shape  [[buffer(2)]],
+                         ushort3 grid [[thread_position_in_grid]]) {
     int height  = shape.dim0;
     int width   = shape.dim1;
     int channel = shape.dim2;
@@ -89,18 +85,15 @@ kernel void brouTanH3D(device half *input           [[buffer(0)]],
         for (int i = x; i < maxI; ++i) {
             int offset = (j * width + i) * channel + z;
             
-            device half4 *inputV  = (device half4*)(input  + offset);
-            device half4 *outputV = (device half4*)(output + offset);
+            device real4 *inputV  = (device real4*)(input  + offset);
+            device real4 *outputV = (device real4*)(output + offset);
             
             outputV[0] = tanh(inputV[0]);
         }
     }
 }
 
-
-
-
-
+#endif
 
 
 

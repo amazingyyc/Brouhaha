@@ -1,14 +1,7 @@
-/**
- * Brouhaha
- *
- * Created by yanyuanchi on 2017/8/9.
- * Copyright © 2017年 yanyuanchi. All rights reserved.
- */
+#if defined(type) && defined(real) && defined(BROU)
 
-#if defined(real) && defined(BROU_NAME)
-
-void BROU_NAME(matrixTranspose4X4)(real *src, size_t srcRowBytes, real *dst, size_t dstRowBytes) {
-    real *realDst = dst;
+void BROU(MatrixTranspose4X4)(type *src, size_t srcRowBytes, type *dst, size_t dstRowBytes) {
+    type *realDst = dst;
     
     dst[0] = src[0]; dst = ((void*)dst) + dstRowBytes;
     dst[0] = src[1]; dst = ((void*)dst) + dstRowBytes;
@@ -41,40 +34,12 @@ void BROU_NAME(matrixTranspose4X4)(real *src, size_t srcRowBytes, real *dst, siz
 }
 
 /**
- * use neon to traspose matrix
- *
- * Not a good method!!
- * todo: add multi threads
- */
-void BROU_NAME(brouTransposeMatrixBlockNeon)(real *in,
-                                             size_t inRow, size_t inCol,
-                                             real *out,
-                                             size_t outRow, size_t outCol) {
-    size_t inRowBytes  = sizeof(real) * inCol;
-    size_t outRowBytes = sizeof(real) * outCol;
-    
-    for (size_t y = 0; y < inRow; y += 4) {
-        y = BROU_MIN(inRow - 4, y);
-        
-        for (size_t x = 0; x < inCol; x += 4) {
-            x = BROU_MIN(inCol - 4, x);
-            
-            BROU_NAME(matrixTranspose4X4Neon)(in + y * inCol + x, inRowBytes, out + x * outCol + y, outRowBytes);
-        }
-    }
-}
-
-/**
  * transpose 4X4 matrix every time
- * Not a good method!!
  * todo: add multi threads
  */
-void BROU_NAME(brouTransposeMatrixBlock)(real *in,
-                                         size_t inRow, size_t inCol,
-                                         real *out,
-                                         size_t outRow, size_t outCol) {
-    size_t inRowBytes  = sizeof(real) * inCol;
-    size_t outRowBytes = sizeof(real) * outCol;
+void BROU(TransposeMatrixBlock)(type *in, size_t inRow, size_t inCol, type *out, size_t outRow, size_t outCol) {
+    size_t inRowBytes  = sizeof(type) * inCol;
+    size_t outRowBytes = sizeof(type) * outCol;
     
     for (size_t y = 0; y < inRow; y += 4) {
         y = BROU_MIN(inRow - 4, y);
@@ -82,7 +47,11 @@ void BROU_NAME(brouTransposeMatrixBlock)(real *in,
         for (size_t x = 0; x < inCol; x += 4) {
             x = BROU_MIN(inCol - 4, x);
             
-            BROU_NAME(matrixTranspose4X4)(in + y * inCol + x, inRowBytes, out + x * outCol + y, outRowBytes);
+#if defined(__ARM_NEON)
+            BROU(MatrixTranspose4X4Neon)(in + y * inCol + x, inRowBytes, out + x * outCol + y, outRowBytes);
+#else
+            BROU(MatrixTranspose4X4)(in + y * inCol + x, inRowBytes, out + x * outCol + y, outRowBytes);
+#endif
         }
     }
 }
@@ -90,10 +59,7 @@ void BROU_NAME(brouTransposeMatrixBlock)(real *in,
 /**
  * transpose the matrix use 2 loop
  */
-void BROU_NAME(brouTransposeMatrixDirectly)(real *in,
-                                            size_t inRow, size_t inCol,
-                                            real *out,
-                                            size_t outRow, size_t outCol) {
+void BROU(TransposeMatrixDirectly)(type *in, size_t inRow, size_t inCol, type *out, size_t outRow, size_t outCol) {
     for (size_t y = 0; y < inCol; ++y) {
         for (size_t x = 0; x < inRow; ++x) {
             out[y * outCol + x] = in[x * inCol + y];
@@ -105,15 +71,11 @@ void BROU_NAME(brouTransposeMatrixDirectly)(real *in,
  * transpose the in matrix to out
  * outRow >= inCol outCol >= inRow
  */
-void BROU_NAME(brouTransposeMatrix)(real *in, size_t inRow, size_t inCol, real *out, size_t outRow, size_t outCol) {
+void BROU(TransposeMatrix)(type *in, size_t inRow, size_t inCol, type *out, size_t outRow, size_t outCol) {
     if (4 > inRow || 4 > inCol) {
-        BROU_NAME(brouTransposeMatrixDirectly)(in, inRow, inCol, out, outRow, outCol);
+        BROU(TransposeMatrixDirectly)(in, inRow, inCol, out, outRow, outCol);
     } else {
-#if defined(__ARM_NEON)
-        BROU_NAME(brouTransposeMatrixBlockNeon)(in, inRow, inCol, out, outRow, outCol);
-#elif
-        BROU_NAME(brouTransposeMatrixBlock)(in, inRow, inCol, out, outRow, outCol);
-#endif
+        BROU(TransposeMatrixBlock)(in, inRow, inCol, out, outRow, outCol);
     }
 }
 

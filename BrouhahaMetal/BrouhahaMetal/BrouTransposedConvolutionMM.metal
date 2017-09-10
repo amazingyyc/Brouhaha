@@ -1,9 +1,3 @@
-#include <metal_stdlib>
-
-#include "BrouStruct.metal"
-
-using namespace metal;
-
 /**
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * transposedconvolutionlayer need 2 temp matrix to store the ephemeral data,
@@ -14,6 +8,8 @@ using namespace metal;
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 
+#if defined(real) && defined(real4) && defined(BROU)
+
 /**
  * convert the input to a matrix
  * the input dimension is (inputHeight, inputWidth, inputChannelX4)
@@ -23,10 +19,10 @@ using namespace metal;
  * the  shape.dim0 = inputHeight*inputWidth shape.dim1 = inputChannelX4 shape.dim2 = inputHeight*inputWidthX4
  * every thread deal with 4X4 block
  */
-kernel void brouConvertInput2MatrixTransposed(device half *input          [[buffer(0)]],
-                                              device half *matrix         [[buffer(1)]],
-                                              constant TensorShape& shape [[buffer(2)]],
-                                              ushort2 grid [[thread_position_in_grid]]) {
+kernel void BROU(TransposedConvolutionInput2Matrix)(device real *input          [[buffer(0)]],
+                                                    device real *matrix         [[buffer(1)]],
+                                                    constant TensorShape& shape [[buffer(2)]],
+                                                    ushort2 grid [[thread_position_in_grid]]) {
     int row = grid.y << 2;
     int col = grid.x << 2;
     
@@ -39,15 +35,15 @@ kernel void brouConvertInput2MatrixTransposed(device half *input          [[buff
     
     int m = shape.dim0;
     
-    half4 in0 = (col >= m)       ? 0 : ((device half4*)(input + col       * nx4 + row))[0];
-    half4 in1 = ((col + 1) >= m) ? 0 : ((device half4*)(input + (col + 1) * nx4 + row))[0];
-    half4 in2 = ((col + 2) >= m) ? 0 : ((device half4*)(input + (col + 2) * nx4 + row))[0];
-    half4 in3 = ((col + 3) >= m) ? 0 : ((device half4*)(input + (col + 3) * nx4 + row))[0];
+    real4 in0 = (col >= m)       ? 0 : ((device real4*)(input + col       * nx4 + row))[0];
+    real4 in1 = ((col + 1) >= m) ? 0 : ((device real4*)(input + (col + 1) * nx4 + row))[0];
+    real4 in2 = ((col + 2) >= m) ? 0 : ((device real4*)(input + (col + 2) * nx4 + row))[0];
+    real4 in3 = ((col + 3) >= m) ? 0 : ((device real4*)(input + (col + 3) * nx4 + row))[0];
     
-    device half4 *matrix0 = (device half4*)(matrix +  row      * mx4 + col);
-    device half4 *matrix1 = (device half4*)(matrix + (row + 1) * mx4 + col);
-    device half4 *matrix2 = (device half4*)(matrix + (row + 2) * mx4 + col);
-    device half4 *matrix3 = (device half4*)(matrix + (row + 3) * mx4 + col);
+    device real4 *matrix0 = (device real4*)(matrix +  row      * mx4 + col);
+    device real4 *matrix1 = (device real4*)(matrix + (row + 1) * mx4 + col);
+    device real4 *matrix2 = (device real4*)(matrix + (row + 2) * mx4 + col);
+    device real4 *matrix3 = (device real4*)(matrix + (row + 3) * mx4 + col);
     
     matrix0[0] = {in0.x, in1.x, in2.x, in3.x};
     matrix1[0] = {in0.y, in1.y, in2.y, in3.y};
@@ -60,14 +56,14 @@ kernel void brouConvertInput2MatrixTransposed(device half *input          [[buff
  * the matrix dimension is (outputChannelX4*kernelHeight*kernelWidth, [inputHeight*inputWidth]X4)
  * every thread output 4X4 block
  */
-kernel void brouConvertMatrix2OutputTransposed(device half *matrix               [[buffer(0)]],
-                                               device half *output               [[buffer(1)]],
-                                               device half *bia                  [[buffer(2)]],
-                                               constant TensorShape& matrixShape [[buffer(3)]],
-                                               constant TensorShape& inputShape  [[buffer(4)]],
-                                               constant TensorShape& outputShape [[buffer(5)]],
-                                               constant ConvolutionShape& convolutionShape [[buffer(6)]],
-                                               ushort3 grid [[thread_position_in_grid]]) {
+kernel void BROU(TransposedConvolutionMatrix2Output)(device real *matrix               [[buffer(0)]],
+                                                     device real *output               [[buffer(1)]],
+                                                     device real *bia                  [[buffer(2)]],
+                                                     constant TensorShape& matrixShape [[buffer(3)]],
+                                                     constant TensorShape& inputShape  [[buffer(4)]],
+                                                     constant TensorShape& outputShape [[buffer(5)]],
+                                                     constant ConvolutionShape& convolutionShape [[buffer(6)]],
+                                                     ushort3 grid [[thread_position_in_grid]]) {
     int y = grid.y << 2;
     int x = grid.x << 2;
     int z = grid.z;
@@ -80,7 +76,7 @@ kernel void brouConvertMatrix2OutputTransposed(device half *matrix              
         return;
     }
     
-    /**[inputHeight*inputWidth]X4*/
+    // int m = matrixShape.dim0;
     int n = matrixShape.dim1;
     
     int inputHeight  = inputShape.dim0;
@@ -101,7 +97,7 @@ kernel void brouConvertMatrix2OutputTransposed(device half *matrix              
     int fakeInputHeight = inputHeight + (inputHeight - 1) * insertY;
     int fakeInputWidth  = inputWidth  + (inputWidth  - 1) * insertX;
     
-    half biasV = convolutionShape.haveBias ? (bia + z)[0] : 0;
+    real biasV = convolutionShape.haveBias ? (bia + z)[0] : 0;
     
     int maxOutY = min(y + 4, outputHeight);
     int maxOutX = min(x + 4, outputWidth);
@@ -111,13 +107,13 @@ kernel void brouConvertMatrix2OutputTransposed(device half *matrix              
     for (int outY = y; outY < maxOutY; ++outY) {
         for (int outX = x; outX < maxOutX; ++outX) {
             /**store the out*/
-            half out = biasV;
+            real out = biasV;
             
             int inputTop  = -padTop  + outY;
             int inputLeft = -padLeft + outX;
             
             int inputBottom = min(inputTop  + kernelHeight, fakeInputHeight);
-            int inputRight  = min(inputLeft + kernelWidth,  fakeInputWidth);
+            int inputRight  = min(inputLeft + kernelWidth ,  fakeInputWidth);
             
             int realInputTop  = (0 > inputTop)  ? 0 : ((inputTop  + insertY) / insertYAdd1 * insertYAdd1);
             int realInputLeft = (0 > inputLeft) ? 0 : ((inputLeft + insertX) / insertXAdd1 * insertXAdd1);
@@ -134,11 +130,14 @@ kernel void brouConvertMatrix2OutputTransposed(device half *matrix              
                 }
             }
             
-            device half *outputV = output + (outY * outputWidth + outX) * outputChannel + z;
+            device real *outputV = output + (outY * outputWidth + outX) * outputChannel + z;
             outputV[0] = out;
         }
     }
 }
+
+#endif
+
 
 
 

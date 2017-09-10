@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0900"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "34F865501ECC446B00354C8D"
+               BlueprintIdentifier = "3498F0A11F493713006DF7D1"
                BuildableName = "libBrouhaha.a"
                BlueprintName = "Brouhaha"
                ReferencedContainer = "container:Brouhaha.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "34F865501ECC446B00354C8D"
+            BlueprintIdentifier = "3498F0A11F493713006DF7D1"
             BuildableName = "libBrouhaha.a"
             BlueprintName = "Brouhaha"
             ReferencedContainer = "container:Brouhaha.xcodeproj">
@@ -65,7 +65,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "34F865501ECC446B00354C8D"
+            BlueprintIdentifier = "3498F0A11F493713006DF7D1"
             BuildableName = "libBrouhaha.a"
             BlueprintName = "Brouhaha"
             ReferencedContainer = "container:Brouhaha.xcodeproj">
