@@ -30,7 +30,7 @@ The Brouhaha has common layers like:Convolution(include Transposed and Dilated c
 ![](Images/art1.gif)
 <br>
 
-***Based on Float32***<br>
+***Based on Float16***<br>
 ![](Images/art2.gif)
 
 ## Why Brouhaha?
