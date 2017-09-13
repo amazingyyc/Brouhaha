@@ -14,7 +14,6 @@
 		34483E951F6510B5005AFF9D /* BrouResidualLayer_half.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E941F6510B5005AFF9D /* BrouResidualLayer_half.m */; };
 		34483E981F651224005AFF9D /* ArtTransformHalfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E971F651224005AFF9D /* ArtTransformHalfViewController.m */; };
 		34483E9A1F651B0D005AFF9D /* tk.png in Resources */ = {isa = PBXBuildFile; fileRef = 34483E991F651B0D005AFF9D /* tk.png */; };
-		34483E9C1F659795005AFF9D /* BrouhahaMetal.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 34483E9B1F65978B005AFF9D /* BrouhahaMetal.metallib */; };
 		345045301F630EAD003666A3 /* zgr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 34317EAB1F5BDC220054B8DC /* zgr.jpg */; };
 		345045311F630EAD003666A3 /* conv1_alpha in Resources */ = {isa = PBXBuildFile; fileRef = 34317E551F5BA29C0054B8DC /* conv1_alpha */; };
 		345045321F630EAD003666A3 /* conv1_beta in Resources */ = {isa = PBXBuildFile; fileRef = 34317E561F5BA29C0054B8DC /* conv1_beta */; };
@@ -78,6 +77,10 @@
 		345045841F630F1B003666A3 /* b3 in Resources */ = {isa = PBXBuildFile; fileRef = 3450457A1F630F1B003666A3 /* b3 */; };
 		345045851F630F1B003666A3 /* b0 in Resources */ = {isa = PBXBuildFile; fileRef = 3450457B1F630F1B003666A3 /* b0 */; };
 		345045861F630F1B003666A3 /* testY100 in Resources */ = {isa = PBXBuildFile; fileRef = 3450457C1F630F1B003666A3 /* testY100 */; };
+		347C28571F6967BF005744A8 /* 1024X1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 347C28561F6967BF005744A8 /* 1024X1024.png */; };
+		347C28591F69685C005744A8 /* BrouhahaMetal.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 347C28581F696857005744A8 /* BrouhahaMetal.metallib */; };
+		347C285B1F69973E005744A8 /* 800X800.png in Resources */ = {isa = PBXBuildFile; fileRef = 347C285A1F69973E005744A8 /* 800X800.png */; };
+		347C285D1F6998E2005744A8 /* 900X900.png in Resources */ = {isa = PBXBuildFile; fileRef = 347C285C1F6998E2005744A8 /* 900X900.png */; };
 		34EC03E91F630DFC00009332 /* libBrouhaha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EC03E81F630DFC00009332 /* libBrouhaha.a */; };
 		34F99F131F4ED04700261B45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F99F121F4ED04700261B45 /* AppDelegate.m */; };
 		34F99F161F4ED04700261B45 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F99F151F4ED04700261B45 /* ViewController.m */; };
@@ -147,7 +150,6 @@
 		34483E961F651224005AFF9D /* ArtTransformHalfViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtTransformHalfViewController.h; sourceTree = "<group>"; };
 		34483E971F651224005AFF9D /* ArtTransformHalfViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtTransformHalfViewController.m; sourceTree = "<group>"; };
 		34483E991F651B0D005AFF9D /* tk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tk.png; sourceTree = "<group>"; };
-		34483E9B1F65978B005AFF9D /* BrouhahaMetal.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; name = BrouhahaMetal.metallib; path = "../../Build/Products/Debug-iphoneos/BrouhahaMetal.metallib"; sourceTree = "<group>"; };
 		345045731F630F1A003666A3 /* testX100 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testX100; path = BrouhahaDemo/LeNet/params/testX100; sourceTree = SOURCE_ROOT; };
 		345045741F630F1A003666A3 /* w1 */ = {isa = PBXFileReference; lastKnownFileType = file; name = w1; path = BrouhahaDemo/LeNet/params/w1; sourceTree = SOURCE_ROOT; };
 		345045751F630F1A003666A3 /* w2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = w2; path = BrouhahaDemo/LeNet/params/w2; sourceTree = SOURCE_ROOT; };
@@ -158,6 +160,10 @@
 		3450457A1F630F1B003666A3 /* b3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = b3; path = BrouhahaDemo/LeNet/params/b3; sourceTree = SOURCE_ROOT; };
 		3450457B1F630F1B003666A3 /* b0 */ = {isa = PBXFileReference; lastKnownFileType = file; name = b0; path = BrouhahaDemo/LeNet/params/b0; sourceTree = SOURCE_ROOT; };
 		3450457C1F630F1B003666A3 /* testY100 */ = {isa = PBXFileReference; lastKnownFileType = file; name = testY100; path = BrouhahaDemo/LeNet/params/testY100; sourceTree = SOURCE_ROOT; };
+		347C28561F6967BF005744A8 /* 1024X1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1024X1024.png; sourceTree = "<group>"; };
+		347C28581F696857005744A8 /* BrouhahaMetal.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; name = BrouhahaMetal.metallib; path = "../../Build/Products/Debug-iphoneos/BrouhahaMetal.metallib"; sourceTree = "<group>"; };
+		347C285A1F69973E005744A8 /* 800X800.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 800X800.png; sourceTree = "<group>"; };
+		347C285C1F6998E2005744A8 /* 900X900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 900X900.png; sourceTree = "<group>"; };
 		34C83A631F630C1300819D44 /* libBrouhaha.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBrouhaha.a; path = "../Build/Products/Debug-iphoneos/libBrouhaha.a"; sourceTree = "<group>"; };
 		34EC03E81F630DFC00009332 /* libBrouhaha.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBrouhaha.a; path = "../Brouhaha/build/Release-iphoneos/libBrouhaha.a"; sourceTree = "<group>"; };
 		34F99F0E1F4ED04700261B45 /* BrouhahaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrouhahaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +277,9 @@
 		34317EAA1F5BDBF80054B8DC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				347C285C1F6998E2005744A8 /* 900X900.png */,
+				347C285A1F69973E005744A8 /* 800X800.png */,
+				347C28561F6967BF005744A8 /* 1024X1024.png */,
 				34483E991F651B0D005AFF9D /* tk.png */,
 				34317EAB1F5BDC220054B8DC /* zgr.jpg */,
 			);
@@ -315,7 +324,7 @@
 		34F99F101F4ED04700261B45 /* BrouhahaDemo */ = {
 			isa = PBXGroup;
 			children = (
-				34483E9B1F65978B005AFF9D /* BrouhahaMetal.metallib */,
+				347C28581F696857005744A8 /* BrouhahaMetal.metallib */,
 				34317E3F1F5B9A6F0054B8DC /* Art transform */,
 				342BA2D91F5588A10018C6C6 /* LeNet */,
 				34F99F141F4ED04700261B45 /* ViewController.h */,
@@ -405,7 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34483E9C1F659795005AFF9D /* BrouhahaMetal.metallib in Resources */,
+				347C28591F69685C005744A8 /* BrouhahaMetal.metallib in Resources */,
 				34483E9A1F651B0D005AFF9D /* tk.png in Resources */,
 				345045801F630F1B003666A3 /* w3 in Resources */,
 				3450456B1F630EBB003666A3 /* Main.storyboard in Resources */,
@@ -413,6 +422,7 @@
 				3450456D1F630EBB003666A3 /* LaunchScreen.storyboard in Resources */,
 				3450456E1F630EBB003666A3 /* Info.plist in Resources */,
 				345045301F630EAD003666A3 /* zgr.jpg in Resources */,
+				347C285D1F6998E2005744A8 /* 900X900.png in Resources */,
 				345045311F630EAD003666A3 /* conv1_alpha in Resources */,
 				345045321F630EAD003666A3 /* conv1_beta in Resources */,
 				345045331F630EAD003666A3 /* conv1_weight in Resources */,
@@ -433,6 +443,7 @@
 				345045401F630EAD003666A3 /* res1_conv2_alpha in Resources */,
 				345045411F630EAD003666A3 /* res1_conv2_beta in Resources */,
 				345045811F630F1B003666A3 /* w0 in Resources */,
+				347C28571F6967BF005744A8 /* 1024X1024.png in Resources */,
 				3450457E1F630F1B003666A3 /* w1 in Resources */,
 				345045851F630F1B003666A3 /* b0 in Resources */,
 				345045421F630EAD003666A3 /* res1_conv2_weight in Resources */,
@@ -453,6 +464,7 @@
 				345045501F630EAD003666A3 /* res4_conv1_beta in Resources */,
 				345045511F630EAD003666A3 /* res4_conv1_weight in Resources */,
 				345045521F630EAD003666A3 /* res4_conv2_alpha in Resources */,
+				347C285B1F69973E005744A8 /* 800X800.png in Resources */,
 				345045831F630F1B003666A3 /* b1 in Resources */,
 				345045531F630EAD003666A3 /* res4_conv2_beta in Resources */,
 				3450457F1F630F1B003666A3 /* w2 in Resources */,

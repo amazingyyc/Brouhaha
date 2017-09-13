@@ -12,42 +12,79 @@
 /**
  * calculate the input mean and "varicance"
  */
-kernel void BROU(CalculateMeanAndVariance3D)(device real *input             [[buffer(0)]],
-                                             device real *mean              [[buffer(1)]],
-                                             device real *variance          [[buffer(2)]],
-                                             device float *e                [[buffer(3)]],
-                                             constant TensorShape &shape    [[buffer(4)]],
-                                             ushort grid [[thread_position_in_grid]]) {
+
+kernel void BROU(CalculateMeanAndVariance3D)(device real *input                         [[buffer(0)]],
+                                             device real *mean                          [[buffer(1)]],
+                                             device real *variance                      [[buffer(2)]],
+                                             constant BatchNormalizationShape &bnShape  [[buffer(3)]],
+                                             constant TensorShape &shape                [[buffer(4)]],
+                                             ushort threadIndexInGroup  [[thread_index_in_threadgroup]],
+                                             ushort3 threadPosInGroup   [[thread_position_in_threadgroup]],
+                                             ushort3 threadPosInGrid    [[thread_position_in_grid]]) {
     int height  = shape.dim0;
     int width   = shape.dim1;
     int channel = shape.dim2;
     
-    int z = grid << 2;
+    int z = threadPosInGrid.z << 2;
     
     if (z >= channel) {
         return;
     }
     
-    float epsilon = e[0];
+    float epsilon = bnShape.epsilon;
     
-    /**use float to store sum of input*/
+    int perThreadWidth  = bnShape.perThreadWidth;
+    int perThreadHeight = bnShape.perThreadHeight;
+    
+    int threadPosInGroupX = threadPosInGroup.x;
+    int threadPosInGroupY = threadPosInGroup.y;
+    
+    int minX = threadPosInGroupX * perThreadWidth;
+    int minY = threadPosInGroupY * perThreadHeight;
+    
+    int maxX = min(minX + perThreadWidth,  width);
+    int maxY = min(minY + perThreadHeight, height);
+    
+    threadgroup real4 meanV;
+    threadgroup float4 sharedSum[32];
+    
     float4 sum = 0;
-    
-    /**calcualte mean*/
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
+    for (int y = minY; y < maxY; ++y) {
+        for (int x = minX; x < maxX; ++x) {
             real4 inputV = ((device real4*)(input + (y * width + x) * channel + z))[0];
             
             sum += (static_cast<float4>(inputV));
         }
     }
     
-    real4 meanV = static_cast<real4>(sum / (1.0 * height * width));
+    sharedSum[threadIndexInGroup] = sum;
+    
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+    
+    /**calculate the sum*/
+    if (0 == threadIndexInGroup) {
+        sum = (sharedSum[0]  + sharedSum[1]  + sharedSum[2]  + sharedSum[3] +
+               sharedSum[4]  + sharedSum[5]  + sharedSum[6]  + sharedSum[7] +
+               sharedSum[8]  + sharedSum[9]  + sharedSum[10] + sharedSum[11] +
+               sharedSum[12] + sharedSum[13] + sharedSum[14] + sharedSum[15] +
+               sharedSum[16] + sharedSum[17] + sharedSum[18] + sharedSum[19] +
+               sharedSum[20] + sharedSum[21] + sharedSum[22] + sharedSum[23] +
+               sharedSum[24] + sharedSum[25] + sharedSum[26] + sharedSum[27] +
+               sharedSum[28] + sharedSum[29] + sharedSum[30] + sharedSum[31]);
+        
+        meanV = static_cast<real4>(sum / (1.0 * height * width));
+        
+        device real4 *mean4 = (device real4*)(mean + z);
+        
+        mean4[0] = meanV;
+    }
+    
+    threadgroup_barrier(mem_flags::mem_threadgroup);
     
     /**calculate variance*/
     sum = 0;
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
+    for (int y = minY; y < maxY; ++y) {
+        for (int x = minX; x < maxX; ++x) {
             real4 inputV = ((device real4*)(input + (y * width + x) * channel + z))[0];
             real4 differ = inputV - meanV;
             
@@ -55,13 +92,26 @@ kernel void BROU(CalculateMeanAndVariance3D)(device real *input             [[bu
         }
     }
     
-    real4 varianceV = static_cast<real4>(1.0 / sqrt(sum / (1.0 * height * width) + epsilon));
+    sharedSum[threadIndexInGroup] = sum;
     
-    device real4 *mean4     = (device real4*)(mean     + z);
-    device real4 *variance4 = (device real4*)(variance + z);
+    threadgroup_barrier(mem_flags::mem_threadgroup);
     
-    mean4[0]     = meanV;
-    variance4[0] = varianceV;
+    if (0 == threadIndexInGroup) {
+        sum = (sharedSum[0]  + sharedSum[1]  + sharedSum[2]  + sharedSum[3] +
+               sharedSum[4]  + sharedSum[5]  + sharedSum[6]  + sharedSum[7] +
+               sharedSum[8]  + sharedSum[9]  + sharedSum[10] + sharedSum[11] +
+               sharedSum[12] + sharedSum[13] + sharedSum[14] + sharedSum[15] +
+               sharedSum[16] + sharedSum[17] + sharedSum[18] + sharedSum[19] +
+               sharedSum[20] + sharedSum[21] + sharedSum[22] + sharedSum[23] +
+               sharedSum[24] + sharedSum[25] + sharedSum[26] + sharedSum[27] +
+               sharedSum[28] + sharedSum[29] + sharedSum[30] + sharedSum[31]);
+        
+        real4 varianceV = static_cast<real4>(1.0 / sqrt(sum / (1.0 * height * width) + epsilon));
+        
+        device real4 *variance4 = (device real4*)(variance + z);
+        
+        variance4[0] = varianceV;
+    }
 }
 
 /**

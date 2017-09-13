@@ -21,10 +21,11 @@
     
     _floatEpison = epsilon;
     
-    _epison = [device newBufferWithLength:sizeof(float)
+    _bnShape = [device newBufferWithLength:sizeof(BatchNormalizationShape)
                                   options:MTLResourceCPUCacheModeDefaultCache | MTLResourceStorageModeShared];
     
-    *((float*)_epison.contents) = _floatEpison;
+    BatchNormalizationShape *bnShapeRef = (BatchNormalizationShape*)_bnShape.contents;
+    bnShapeRef->epsilon = _floatEpison;
     
     _shape = [device newBufferWithLength:sizeof(TensorShape)
                                  options:MTLResourceCPUCacheModeDefaultCache | MTLResourceStorageModeShared];
@@ -126,21 +127,28 @@
     shapeRef->dim1 = inputShape.dim1;
     shapeRef->dim2 = _channelX4;
     
+    int perThreadWidth  = (inputShape.dim1 + 7) / 8;
+    int perThreadHeight = (inputShape.dim0 + 3) / 4;
+    
+    BatchNormalizationShape *bnShapeRef = (BatchNormalizationShape*)_bnShape.contents;
+    bnShapeRef->perThreadWidth  = perThreadWidth;
+    bnShapeRef->perThreadHeight = perThreadHeight;
+    
     /**calcualte mean*/
     id<MTLComputeCommandEncoder> meanVarianceEncoder = [commandBuffer computeCommandEncoder];
     [meanVarianceEncoder setComputePipelineState:_calculateMeanVariancePipelineState];
-    [meanVarianceEncoder setBuffer:input     offset:0 atIndex:0];
-    [meanVarianceEncoder setBuffer:_mean     offset:0 atIndex:1];
-    [meanVarianceEncoder setBuffer:_variance offset:0 atIndex:2];
-    [meanVarianceEncoder setBuffer:_epison   offset:0 atIndex:3];
-    [meanVarianceEncoder setBuffer:_shape    offset:0 atIndex:4];
+    [meanVarianceEncoder setBuffer:input      offset:0 atIndex:0];
+    [meanVarianceEncoder setBuffer:_mean      offset:0 atIndex:1];
+    [meanVarianceEncoder setBuffer:_variance  offset:0 atIndex:2];
+    [meanVarianceEncoder setBuffer:_bnShape   offset:0 atIndex:3];
+    [meanVarianceEncoder setBuffer:_shape     offset:0 atIndex:4];
     
     NSUInteger exeWidth = _calculateMeanVariancePipelineState.threadExecutionWidth;
     
-    MTLSize group = MTLSizeMake(exeWidth, 1, 1);
-    MTLSize grid  = MTLSizeMake((_channelX4 + exeWidth * 4 - 1) / (exeWidth * 4),
+    MTLSize group = MTLSizeMake(8, 4, 1);
+    MTLSize grid  = MTLSizeMake(1,
                                 1,
-                                1);
+                                _channelX4 / 4);
     
     [meanVarianceEncoder dispatchThreadgroups:grid threadsPerThreadgroup:group];
     [meanVarianceEncoder endEncoding];

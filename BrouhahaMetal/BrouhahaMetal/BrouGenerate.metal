@@ -8,6 +8,7 @@
  */
 
 #include <metal_stdlib>
+#include <metal_compute>
 
 #include "BrouMacro.metal"
 #include "BrouStruct.metal"

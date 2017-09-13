@@ -17,7 +17,7 @@
     
     float _floatEpison;
     
-    id<MTLBuffer> _epison;
+    id<MTLBuffer> _bnShape;
     id<MTLBuffer> _shape;
     
     id<MTLBuffer> _mean;

@@ -25,7 +25,7 @@
     BrouResidualLayer_half *res4;
     BrouResidualLayer_half *res5;
     
-    BrouTransposedConvolutionMMLayer_half *transposeConv1;
+    BrouTransposedConvolutionLayer_half *transposeConv1;
     
     BrouBatchNormalizationLayer_half *batchNorm4;
     BrouReLuLayer_half *relu4;
@@ -67,7 +67,7 @@
     [super viewDidLoad];
     
     NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *imagePath  = [mainBundle pathForResource:@"tk" ofType:@"png"];
+    NSString *imagePath  = [mainBundle pathForResource:@"800X800" ofType:@"png"];
     _originImage = [UIImage imageWithContentsOfFile:imagePath];
     
     /**init views*/
@@ -165,34 +165,34 @@
     
     [batchNorm1 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [relu1      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    
+
     outputShape.dim0 = ceil(1.0 * outputShape.dim0 / 2.0);
     outputShape.dim1 = ceil(1.0 * outputShape.dim1 / 2.0);
     outputShape.dim2 = 64;
-    
+
     [conv2 computeWithCommandBuffer:commandBuffer
                               input:buffer1.buffer
                          inputShape:inputShape
                              output:buffer2.buffer
                         outputShape:outputShape];
-    
+
     inputShape = outputShape;
-    
+
     [batchNorm2 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
     [relu2      computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    
+
     outputShape.dim0 = ceil(1.0 * outputShape.dim0 / 2.0);
     outputShape.dim1 = ceil(1.0 * outputShape.dim1 / 2.0);
     outputShape.dim2 = 128;
-    
+
     [conv3 computeWithCommandBuffer:commandBuffer
                               input:buffer2.buffer
                          inputShape:inputShape
                              output:buffer1.buffer
                         outputShape:outputShape];
-    
+
     inputShape = outputShape;
-    
+
     [batchNorm3 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [relu3      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
     
@@ -201,43 +201,43 @@
     [res3 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [res4 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
     [res5 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    
+
     outputShape.dim0 = outputShape.dim0 * 2;
     outputShape.dim1 = outputShape.dim1 * 2;
     outputShape.dim2 = 64;
-    
+
     [transposeConv1 computeWithCommandBuffer:commandBuffer
                                        input:buffer2.buffer
                                   inputShape:inputShape
                                       output:buffer1.buffer
                                  outputShape:outputShape];
-    
+
     inputShape = outputShape;
-    
+
     [batchNorm4 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [relu4      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    
+
     outputShape.dim0 = outputShape.dim0 * 2;
     outputShape.dim1 = outputShape.dim1 * 2;
     outputShape.dim2 = 32;
-    
+
     [transposeConv2 computeWithCommandBuffer:commandBuffer
                                        input:buffer1.buffer
                                   inputShape:inputShape
                                       output:buffer2.buffer
                                  outputShape:outputShape];
-    
+
     inputShape = outputShape;
-    
+
     [batchNorm5 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
     [relu5      computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    
+
     outputShape.dim2 = 4;
-    
+
     [conv4 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    
+
     inputShape = outputShape;
-    
+
     [batchNorm6     computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [tanh1          computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
     [linear1        computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
@@ -480,7 +480,7 @@
                                                 floatBeta2:res5_conv2_beta
                                                    channel:128];
     
-    transposeConv1 = [[BrouTransposedConvolutionMMLayer_half alloc] initWithDevice:device
+    transposeConv1 = [[BrouTransposedConvolutionLayer_half alloc] initWithDevice:device
                                                                             library:library
                                                                         floatKernel:transpose_conv1_weight
                                                                           floatBias:nil

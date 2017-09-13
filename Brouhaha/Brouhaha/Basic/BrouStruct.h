@@ -50,4 +50,16 @@ typedef struct _ConvolutionShape {
     bool haveBias;
 } ConvolutionShape;
 
+/**
+ * a struct to store the BatchNormalization params
+ */
+typedef struct _BatchNormalizationShape {
+    /**the epsilon of BN*/
+    float epsilon;
+    
+    /**every thread deal with (perThreadWidth, perThreadHeight) input*/
+    int32_t perThreadWidth;
+    int32_t perThreadHeight;
+} BatchNormalizationShape;
+
 #endif
