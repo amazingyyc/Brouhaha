@@ -11,11 +11,10 @@
     BrouBatchNormalizationLayer_half *batchNorm1;
     BrouReLuLayer_half *relu1;
     
-    BrouConvolutionMMLayer_half *conv2;
+    BrouConvolutionLayer_half *conv2;
     BrouBatchNormalizationLayer_half *batchNorm2;
     BrouReLuLayer_half *relu2;
-    
-    BrouConvolutionMMLayer_half *conv3;
+    BrouConvolutionLayer_half *conv3;
     BrouBatchNormalizationLayer_half *batchNorm3;
     BrouReLuLayer_half *relu3;
     
@@ -30,7 +29,7 @@
     BrouBatchNormalizationLayer_half *batchNorm4;
     BrouReLuLayer_half *relu4;
     
-    BrouTransposedConvolutionMMLayer_half *transposeConv2;
+    BrouTransposedConvolutionLayer_half *transposeConv2;
     
     BrouBatchNormalizationLayer_half *batchNorm5;
     BrouReLuLayer_half *relu5;
@@ -67,7 +66,7 @@
     [super viewDidLoad];
     
     NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *imagePath  = [mainBundle pathForResource:@"800X800" ofType:@"png"];
+    NSString *imagePath  = [mainBundle pathForResource:@"1024X1024" ofType:@"png"];
     _originImage = [UIImage imageWithContentsOfFile:imagePath];
     
     /**init views*/
@@ -142,27 +141,27 @@
     inputShape.dim0 = height;
     inputShape.dim1 = width;
     inputShape.dim2 = 4;
-    
+
     outputShape.dim0 = height;
     outputShape.dim1 = width;
     outputShape.dim2 = 4;
-    
+
     [rgbConvert1 computeWithCommandBuffer:commandBuffer
                                     input:buffer1.buffer
                                inputShape:inputShape
                                    output:buffer2.buffer
                               outputShape:outputShape];
-    
+
     outputShape.dim2 = 32;
-    
+
     [conv1 computeWithCommandBuffer:commandBuffer
                               input:buffer2.buffer
                          inputShape:inputShape
                              output:buffer1.buffer
                         outputShape:outputShape];
-    
+
     inputShape = outputShape;
-    
+
     [batchNorm1 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [relu1      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
 
@@ -195,13 +194,51 @@
 
     [batchNorm3 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [relu3      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
+
+    [commandBuffer commit];
+    [commandBuffer waitUntilCompleted];
+    
+    /**
+     * for the huge pic like 1024X1024 the App will crash
+     * but if the Nerual Network running layer by layer that are splited, it will be correct.
+     * I do not know why, just guess:the Metal may be can't run too long for one MTLCommandBuffer.
+     * if the thread sleep for a while, it will be correct
+     *
+     * so weird!!!!!!!!!!!
+     */
+    [NSThread sleepForTimeInterval:1];
+    
+    commandBuffer = [queue commandBuffer];
     
     [res1 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [res2 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
+    
+    [commandBuffer commit];
+    [commandBuffer waitUntilCompleted];
+    
+    [NSThread sleepForTimeInterval:1];
+    
+    commandBuffer = [queue commandBuffer];
+    
     [res3 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
     [res4 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
+    
+    [commandBuffer commit];
+    [commandBuffer waitUntilCompleted];
+    
+    [NSThread sleepForTimeInterval:1];
+    
+    commandBuffer = [queue commandBuffer];
+    
     [res5 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
 
+    [commandBuffer commit];
+    [commandBuffer waitUntilCompleted];
+    
+    [NSThread sleepForTimeInterval:1];
+    
+    commandBuffer = [queue commandBuffer];
+    
     outputShape.dim0 = outputShape.dim0 * 2;
     outputShape.dim1 = outputShape.dim1 * 2;
     outputShape.dim2 = 64;
@@ -386,7 +423,7 @@
     
     relu1 = [[BrouReLuLayer_half alloc] initWithDevice:device library:library dimensionType:Dimension3D];
     
-    conv2 = [[BrouConvolutionMMLayer_half alloc] initWithDevice:device
+    conv2 = [[BrouConvolutionLayer_half alloc] initWithDevice:device
                                                          library:library
                                                      floatKernel:conv2_weight
                                                        floatBias:nil
@@ -408,7 +445,7 @@
     
     relu2 = [[BrouReLuLayer_half alloc] initWithDevice:device library:library dimensionType:Dimension3D];
     
-    conv3 = [[BrouConvolutionMMLayer_half alloc] initWithDevice:device
+    conv3 = [[BrouConvolutionLayer_half alloc] initWithDevice:device
                                                          library:library
                                                      floatKernel:conv3_weight
                                                        floatBias:nil
@@ -502,7 +539,7 @@
     
     relu4 = [[BrouReLuLayer_half alloc] initWithDevice:device library:library dimensionType:Dimension3D];
     
-    transposeConv2 = [[BrouTransposedConvolutionMMLayer_half alloc] initWithDevice:device
+    transposeConv2 = [[BrouTransposedConvolutionLayer_half alloc] initWithDevice:device
                                                                             library:library
                                                                         floatKernel:transpose_conv2_weight
                                                                           floatBias:nil
