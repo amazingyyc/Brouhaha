@@ -8,6 +8,11 @@ github:https://github.com/amazingyyc/Brouhaha
 码云:https://gitee.com/JingQiManHua/Brouhaha
 
 ## 更新 
+### 最新
+1. 精简API，调用更方便。
+2. 添加一个临时MTLBuffer的类，在运行期间更加节省内存。
+
+### 2017
 1. 添加Float32支持，现在所有的“层”均支持Float16和Float32。
 2. 添加基于Float32的风格转换Demo。
 3. 修改API，更灵活的使用。

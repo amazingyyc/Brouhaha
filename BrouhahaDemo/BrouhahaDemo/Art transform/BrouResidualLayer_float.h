@@ -1,21 +1,6 @@
 #import "Brouhaha.h"
 
-@interface BrouResidualLayer_float : BrouLayer {
-    BrouConvolutionMMLayer_float *_conv1;
-    BrouBatchNormalizationLayer_float *_batchNorm1;
-    BrouReLuLayer_float *_relu1;
-    
-    BrouConvolutionMMLayer_float *_conv2;
-    BrouBatchNormalizationLayer_float *_batchNorm2;
-    
-    BrouAddLayer_float *_add;
-    
-    int _channel;
-    int _channelX4;
-    
-    id<MTLBuffer> _buffer1;
-    id<MTLBuffer> _buffer2;
-}
+@interface BrouResidualLayer_float : BrouLayer
 
 /**
  * this residual layer ref:https://github.com/lengstrom/fast-style-transfer#video-stylization

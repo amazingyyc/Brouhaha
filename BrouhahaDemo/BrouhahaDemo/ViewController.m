@@ -61,13 +61,13 @@
         
         [self presentViewController:ctrl animated:YES completion:nil];
     } else if (1 == indexPath.row) {
-        ArtTransformViewController *ctrl = [[ArtTransformViewController alloc] init];
+         ArtTransformViewController *ctrl = [[ArtTransformViewController alloc] init];
         
-        [self presentViewController:ctrl animated:YES completion:nil];
+         [self presentViewController:ctrl animated:YES completion:nil];
     } else if (2 == indexPath.row) {
-        ArtTransformHalfViewController *ctrl = [[ArtTransformHalfViewController alloc] init];
+         ArtTransformHalfViewController *ctrl = [[ArtTransformHalfViewController alloc] init];
         
-        [self presentViewController:ctrl animated:YES completion:nil];
+         [self presentViewController:ctrl animated:YES completion:nil];
     }
 }
 

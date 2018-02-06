@@ -1,9 +1,6 @@
 #if defined(type) && defined(real) && defined(BROU_METAL) && defined(BROU_OBJECT)
 
-@interface BROU_OBJECT(AveragePoolingLayer) : BROU_OBJECT(PoolingLayer) {
-    /**if the average include the pad*/
-    BOOL _withPad;
-}
+@interface BROU_OBJECT(AveragePoolingLayer) : BrouLayer
 
 - (instancetype)initWithDevice:(id<MTLDevice>)device
                        library:(id<MTLLibrary>)library

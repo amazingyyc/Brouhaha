@@ -2,30 +2,15 @@
 #import <Metal/Metal.h>
 
 #import "BrouStruct.h"
+#import "BrouTensor.h"
 
-@interface BrouLayer : NSObject {
-    /**the name of the layer*/
-    NSString *_name;
-    
-    /**the name of Metal fucntion*/
-    NSString *_functionName;
-    
-    /**the Metal computePipelineState*/
-    id<MTLComputePipelineState> _computePipelineState;
-}
+@interface BrouLayer : NSObject
 
-- (instancetype)initWithName:(NSString*)name;
+@property(nonatomic, strong) NSString *name;
 
-- (void)configComputePipelinesStateWithDevice:(id<MTLDevice>)device
-                                      library:(id<MTLLibrary>)library;
+- (instancetype)initWithName:(NSString *)name;
 
-- (void)computeWithCommandBuffer:(id<MTLCommandBuffer>)commandBuffer
-                           input:(id<MTLBuffer>)input
-                      inputShape:(TensorShape)inputShape
-                          output:(id<MTLBuffer>)output
-                     outputShape:(TensorShape)outputShape;
-
-- (void)setLayerName:(NSString*)name;
-- (NSString*)getLayerName;
-
+- (void)computeCommandBuffer:(id<MTLCommandBuffer>)commandBuffer
+                       input:(id<BrouTensor>)input
+                      output:(id<BrouTensor>)output;
 @end

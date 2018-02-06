@@ -2,7 +2,7 @@
 #import "ArtTransformViewController.h"
 #import "Brouhaha.h"
 #import "BrouResidualLayer_float.h"
-#import "BrouTemporaryBuffer.h"
+#import "BrouShareBuffer.h"
 
 /**
  * the art transform ref:https://github.com/lengstrom/fast-style-transfer#video-stylization
@@ -53,8 +53,46 @@
     id<MTLLibrary> library;
     id<MTLCommandQueue> queue;
     
-    BrouTemporaryBuffer *buffer1;
-    BrouTemporaryBuffer *buffer2;
+    id<BrouTensor> rgbConvert1Input;
+    id<BrouTensor> rgbConvert1Output;
+    
+    id<BrouTensor> conv1Output;
+    id<BrouTensor> batchNorm1Output;
+    id<BrouTensor> relu1Output;
+    
+    id<BrouTensor> conv2Output;
+    id<BrouTensor> batchNorm2Output;
+    id<BrouTensor> relu2Output;
+    
+    id<BrouTensor> conv3Output;
+    id<BrouTensor> batchNorm3Output;
+    id<BrouTensor> relu3Output;
+    
+    id<BrouTensor> res1Output;
+    id<BrouTensor> res2Output;
+    id<BrouTensor> res3Output;
+    id<BrouTensor> res4Output;
+    id<BrouTensor> res5Output;
+    
+    id<BrouTensor> transposeConv1Output;
+    
+    id<BrouTensor> batchNorm4Output;
+    id<BrouTensor> relu4Output;
+    
+    id<BrouTensor> transposeConv2Output;
+    
+    id<BrouTensor> batchNorm5Output;
+    id<BrouTensor> relu5Output;
+    
+    id<BrouTensor> conv4Output;
+    
+    id<BrouTensor> batchNorm6Output;
+    
+    id<BrouTensor> tanh1Output;
+    id<BrouTensor> linear1Output;
+    id<BrouTensor> rgbConvert2Output;
+    
+    BrouShareBuffer *shareBuffer;
 }
 
 @property(nonatomic, strong) UIButton *button;
@@ -135,109 +173,120 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)configBufferHeight:(int)height width:(int)width device:(id<MTLDevice>)device {
+    shareBuffer = [BrouShareBuffer defaultWithDevice:device];
+    
+    rgbConvert1Input = [BrouTemporaryTensor_float initWithHeight:height width:width channel:4 temporaryBufer:shareBuffer];
+    
+    rgbConvert1Output = [BrouTemporaryTensor_float initWithHeight:height width:width channel:4 temporaryBufer:shareBuffer];
+    
+    conv1Output      = [BrouTemporaryTensor_float initWithHeight:height width:width channel:32 temporaryBufer:shareBuffer];
+    batchNorm1Output = [BrouTemporaryTensor_float initWithHeight:height width:width channel:32 temporaryBufer:shareBuffer];
+    relu1Output      = [BrouTemporaryTensor_float initWithHeight:height width:width channel:32 temporaryBufer:shareBuffer];
+    
+    int dim0 = ceil(1.0 * height / 2.0);
+    int dim1 = ceil(1.0 * width  / 2.0);
+    int dim2 = 64;
+    
+    conv2Output      = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    batchNorm2Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    relu2Output      = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    dim0 = ceil(1.0 * dim0 / 2.0);
+    dim1 = ceil(1.0 * dim1 / 2.0);
+    dim2 = 128;
+    
+    conv3Output      = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    batchNorm3Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    relu3Output      = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    res1Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    res2Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    res3Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    res4Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    res5Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    dim0 = dim0 * 2;
+    dim1 = dim1 * 2;
+    dim2 = 64;
+    
+    transposeConv1Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    batchNorm4Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    relu4Output      = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    dim0 = dim0 * 2;
+    dim1 = dim1 * 2;
+    dim2 = 32;
+    
+    transposeConv2Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    batchNorm5Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    relu5Output      = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    dim2 = 4;
+    
+    conv4Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    batchNorm6Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    
+    tanh1Output       = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    linear1Output     = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+    rgbConvert2Output = [BrouTemporaryTensor_float initWithHeight:dim0 width:dim1 channel:dim2 temporaryBufer:shareBuffer];
+}
+
 - (UIImage*)runArtTransfromWithHeight:(int)height width:(int)width input:(void*)uint8Input {
     NSAssert(height > 16 && width > 16, @"the input height and width is error!");
     
-    [self configFloatBufferWithHeight:height width:width device:device];
+    [self configBufferHeight:height width:width device:device];
     
-    memcpy(buffer1.buffer.contents, uint8Input, 4 * height * width);
+    memcpy(rgbConvert1Input.tensorBuffer.contents, uint8Input, 4 * height * width);
     
     id<MTLCommandBuffer> commandBuffer = [queue commandBuffer];
     
-    TensorShape inputShape;
-    TensorShape outputShape;
-
-    inputShape.dim0 = height;
-    inputShape.dim1 = width;
-    inputShape.dim2 = 4;
-
-    outputShape.dim0 = height;
-    outputShape.dim1 = width;
-    outputShape.dim2 = 4;
-
-    [rgbConvert1 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-
-    outputShape.dim2 = 32;
-
-    [conv1 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [batchNorm1 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [relu1      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-    outputShape.dim0 = ceil(1.0 * outputShape.dim0 / 2.0);
-    outputShape.dim1 = ceil(1.0 * outputShape.dim1 / 2.0);
-    outputShape.dim2 = 64;
-
-    [conv2 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [batchNorm2 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    [relu2      computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-
-    outputShape.dim0 = ceil(1.0 * outputShape.dim0 / 2.0);
-    outputShape.dim1 = ceil(1.0 * outputShape.dim1 / 2.0);
-    outputShape.dim2 = 128;
-
-    [conv3 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [batchNorm3 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [relu3      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-    [res1 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [res2 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    [res3 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [res4 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    [res5 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-
-    outputShape.dim0 = outputShape.dim0 * 2;
-    outputShape.dim1 = outputShape.dim1 * 2;
-    outputShape.dim2 = 64;
-
-    [transposeConv1 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [batchNorm4 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [relu4      computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-
-
-    outputShape.dim0 = outputShape.dim0 * 2;
-    outputShape.dim1 = outputShape.dim1 * 2;
-    outputShape.dim2 = 32;
-
-    [transposeConv2 computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [batchNorm5 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    [relu5      computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-
-    outputShape.dim2 = 4;
-
-    [conv4 computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [batchNorm6     computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [tanh1          computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-    [linear1        computeWithCommandBuffer:commandBuffer input:buffer1.buffer inputShape:inputShape output:buffer2.buffer outputShape:outputShape];
-    [rgbConvert2    computeWithCommandBuffer:commandBuffer input:buffer2.buffer inputShape:inputShape output:buffer1.buffer outputShape:outputShape];
-
+    [rgbConvert1 computeCommandBuffer:commandBuffer input:rgbConvert1Input output:rgbConvert1Output];
+    [conv1       computeCommandBuffer:commandBuffer input:rgbConvert1Output output:conv1Output];
+    [batchNorm1  computeCommandBuffer:commandBuffer input:conv1Output output:batchNorm1Output];
+    [relu1       computeCommandBuffer:commandBuffer input:batchNorm1Output output:relu1Output];
+    
+    [conv2       computeCommandBuffer:commandBuffer input:relu1Output output:conv2Output];
+    [batchNorm2  computeCommandBuffer:commandBuffer input:conv2Output output:batchNorm2Output];
+    [relu2       computeCommandBuffer:commandBuffer input:batchNorm2Output output:relu2Output];
+    
+    [conv3       computeCommandBuffer:commandBuffer input:relu2Output output:conv3Output];
+    [batchNorm3  computeCommandBuffer:commandBuffer input:conv3Output output:batchNorm3Output];
+    [relu3       computeCommandBuffer:commandBuffer input:batchNorm3Output output:relu3Output];
+    
+    [res1 computeCommandBuffer:commandBuffer input:relu3Output output:res1Output];
+    [res2 computeCommandBuffer:commandBuffer input:res1Output output:res2Output];
+    [res3 computeCommandBuffer:commandBuffer input:res2Output output:res3Output];
+    [res4 computeCommandBuffer:commandBuffer input:res3Output output:res4Output];
+    [res5 computeCommandBuffer:commandBuffer input:res4Output output:res5Output];
+    
+    [transposeConv1 computeCommandBuffer:commandBuffer input:res5Output output:transposeConv1Output];
+    
+    [batchNorm4  computeCommandBuffer:commandBuffer input:transposeConv1Output output:batchNorm4Output];
+    [relu4       computeCommandBuffer:commandBuffer input:batchNorm4Output output:relu4Output];
+    
+    [transposeConv2 computeCommandBuffer:commandBuffer input:relu4Output output:transposeConv2Output];
+    [batchNorm5     computeCommandBuffer:commandBuffer input:transposeConv2Output output:batchNorm5Output];
+    [relu5          computeCommandBuffer:commandBuffer input:batchNorm5Output output:relu5Output];
+    
+    [conv4       computeCommandBuffer:commandBuffer input:relu5Output output:conv4Output];
+    [batchNorm6  computeCommandBuffer:commandBuffer input:conv4Output output:batchNorm6Output];
+    [tanh1       computeCommandBuffer:commandBuffer input:batchNorm6Output output:tanh1Output];
+    [linear1     computeCommandBuffer:commandBuffer input:tanh1Output output:linear1Output];
+    [rgbConvert2 computeCommandBuffer:commandBuffer input:linear1Output output:rgbConvert2Output];
+    
     [commandBuffer commit];
     [commandBuffer waitUntilCompleted];
 
-    void *imageRawData = malloc(4 * outputShape.dim0 * outputShape.dim1);
-
-    memcpy(imageRawData, buffer1.buffer.contents, 4 * outputShape.dim0 * outputShape.dim1);
-
-    UIImage *artImage = [self getUIImageFromPixels:imageRawData width:outputShape.dim1 height:outputShape.dim0];
-
+    void *imageRawData = malloc(4 * rgbConvert2Output.dim0 * rgbConvert2Output.dim1);
+    
+    memcpy(imageRawData, rgbConvert2Output.tensorBuffer.contents, 4 * rgbConvert2Output.dim0 * rgbConvert2Output.dim1);
+    
+    UIImage *artImage = [self getUIImageFromPixels:imageRawData width:rgbConvert2Output.dim1 height:rgbConvert2Output.dim0];
+    
     return artImage;
 }
 
@@ -294,43 +343,7 @@
     return image;
 }
 
-- (void)configFloatBufferWithHeight:(int)height width:(int)width device:(id<MTLDevice>)device {
-    [buffer1 configWithFloatHeight:height width:width channel:3];
-    [buffer2 configWithFloatHeight:height width:width channel:3];
-    
-    [buffer1 configWithFloatHeight:height width:width channel:32];
-    [buffer2 configWithFloatHeight:height width:width channel:32];
-    
-    height = ceil(1.0 * height / 2.0);
-    width  = ceil(1.0 * width  / 2.0);
-    
-    [buffer1 configWithFloatHeight:height width:width channel:64];
-    [buffer2 configWithFloatHeight:height width:width channel:64];
-    
-    height = ceil(1.0 * height / 2.0);
-    width  = ceil(1.0 * width  / 2.0);
-    
-    [buffer1 configWithFloatHeight:height width:width channel:128];
-    [buffer2 configWithFloatHeight:height width:width channel:128];
-    
-    height = 2 * height;
-    width  = 2 * width;
-    
-    [buffer1 configWithFloatHeight:height width:width channel:64];
-    [buffer2 configWithFloatHeight:height width:width channel:64];
-    
-    height = 2 * height;
-    width  = 2 * width;
-    
-    [buffer1 configWithFloatHeight:height width:width channel:32];
-    [buffer2 configWithFloatHeight:height width:width channel:32];
-    
-    [buffer1 configWithDevice:device];
-    [buffer2 configWithDevice:device];
-}
-
 - (void)initArtTransfrom {
-    /**load the LeNet model to test the Brouhaha*/
     NSBundle *mainBundle = [NSBundle mainBundle];
     
     device = MTLCreateSystemDefaultDevice();
@@ -581,7 +594,7 @@
                                                                    epsilon:epsilon
                                                                 floatAlpha:conv4_alpha
                                                                  floatBeta:conv4_beta
-                                                                   channel:3];
+                                                                   channel:4];
     
     tanh1 = [[BrouTanHLayer_float alloc] initWithDevice:device library:library dimensionType:Dimension3D];
     
@@ -647,9 +660,6 @@
     munmap(conv4_weight, 3*9*9*32*4);
     munmap(conv4_alpha, 3*4);
     munmap(conv4_beta, 3*4);
-    
-    buffer1 = [[BrouTemporaryBuffer alloc] init];
-    buffer2 = [[BrouTemporaryBuffer alloc] init];
 }
 
 /**

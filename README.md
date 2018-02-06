@@ -5,6 +5,11 @@ The Brouhaha is a Deep Learning toolkit that based on iOS Metal. It make easier 
 China site:https://gitee.com/JingQiManHua/Brouhaha
 
 ## Update Note
+### last
+1. simplify the API and make it easier to use.
+2. add a tempporary MTLBuffer to save the memory when runnning.
+
+#### 2017
 1. Add float32 support, The layers support the flaot16 and float32 at the same time.
 2. Add a art-transform demo on float32.
 3. change the API and it become more feasible.

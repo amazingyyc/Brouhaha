@@ -1,5 +1,24 @@
 #import "BrouResidualLayer_float.h"
 
+@interface BrouResidualLayer_float() {
+    BrouConvolutionMMLayer_float *_conv1;
+    BrouBatchNormalizationLayer_float *_batchNorm1;
+    BrouReLuLayer_float *_relu1;
+    
+    BrouConvolutionMMLayer_float *_conv2;
+    BrouBatchNormalizationLayer_float *_batchNorm2;
+    
+    BrouAddLayer_float *_add;
+    
+    int _channel;
+    int _channelX4;
+    
+    id<BrouTensor> _buffer1;
+    id<BrouTensor> _buffer2;
+}
+
+@end
+
 @implementation BrouResidualLayer_float
 
 - (instancetype)initWithDevice:(id<MTLDevice>)device
@@ -63,77 +82,47 @@
                                                                     channel:_channel];
     
     _add = [[BrouAddLayer_float alloc] initWithDevice:device library:library dimensionType:Dimension3D];
-    
-    [_conv1 setLayerName:@"conv1"];
-    [_conv2 setLayerName:@"conv2"];
-    
+
     return self;
 }
 
-- (void)checkParamsWithInputShape:(TensorShape)inputShape
-                      outputShape:(TensorShape)outputShape {
-    NSAssert(inputShape.dim0 == outputShape.dim0 && inputShape.dim0 > 0 &&
-             inputShape.dim1 == outputShape.dim1 && inputShape.dim1 > 0 &&
-             inputShape.dim2 == outputShape.dim2 && inputShape.dim2 > 0,
+- (void)checkParamsWithInput:(id<BrouTensor>)input
+                      output:(id<BrouTensor>)output {
+    NSAssert(input.dim0 == output.dim0 && input.dim0 > 0 &&
+             input.dim1 == output.dim1 && input.dim1 > 0 &&
+             input.dim2 == output.dim2 && input.dim2 > 0,
              @"the shape is error!");
     
-    NSAssert(inputShape.dim2 == _channelX4, @"the shape is error!");
+    NSAssert(input.innermostDimX4 == _channelX4, @"the shape is error!");
 }
 
-- (void)computeWithCommandBuffer:(id<MTLCommandBuffer>)commandBuffer
-                           input:(id<MTLBuffer>)input
-                      inputShape:(TensorShape)inputShape
-                          output:(id<MTLBuffer>)output
-                     outputShape:(TensorShape)outputShape {
-    [self checkParamsWithInputShape:inputShape outputShape:outputShape];
+- (void)computeCommandBuffer:(id<MTLCommandBuffer>)commandBuffer
+                       input:(id<BrouTensor>)input
+                      output:(id<BrouTensor>)output {
+    [self checkParamsWithInput:input output:output];
     
-    int length = sizeof(float)*inputShape.dim0*inputShape.dim1*inputShape.dim2;
+    NSUInteger length = sizeof(float) * input.dim0 * input.dim1 * input.innermostDimX4;
     
-    if (!_buffer1 || _buffer1.length < length) {
-        _buffer1 = [commandBuffer.device newBufferWithLength:length
-                                                     options:MTLResourceCPUCacheModeDefaultCache | MTLResourceStorageModeShared];
+    if (!_buffer1 || _buffer1.tensorBuffer.length < length) {
+        _buffer1 = [BrouUniqueTensor_float initWithHeight:input.dim0
+                                                    width:input.dim1
+                                                  channel:input.innermostDimX4
+                                                   device:commandBuffer.device];
     }
     
-    if (!_buffer2 || _buffer2.length < length) {
-        _buffer2 = [commandBuffer.device newBufferWithLength:length
-                                                     options:MTLResourceCPUCacheModeDefaultCache | MTLResourceStorageModeShared];
+    if (!_buffer2 || _buffer2.tensorBuffer.length < length) {
+        _buffer2 = [BrouUniqueTensor_float initWithHeight:input.dim0
+                                                    width:input.dim1
+                                                  channel:input.innermostDimX4
+                                                   device:commandBuffer.device];
     }
     
-    [_conv1 computeWithCommandBuffer:commandBuffer
-                               input:input
-                          inputShape:inputShape
-                              output:_buffer1
-                         outputShape:inputShape];
-    
-    [_batchNorm1 computeWithCommandBuffer:commandBuffer
-                                    input:_buffer1
-                               inputShape:inputShape
-                                   output:_buffer2
-                              outputShape:inputShape];
-    
-    [_relu1 computeWithCommandBuffer:commandBuffer
-                               input:_buffer2
-                          inputShape:inputShape
-                              output:_buffer1
-                         outputShape:inputShape];
-    
-    [_conv2 computeWithCommandBuffer:commandBuffer
-                               input:_buffer1
-                          inputShape:inputShape
-                              output:_buffer2
-                         outputShape:inputShape];
-    
-    [_batchNorm2 computeWithCommandBuffer:commandBuffer
-                                    input:_buffer2
-                               inputShape:inputShape
-                                   output:_buffer1
-                              outputShape:inputShape];
-    
-    [_add computeWithCommandBuffer:commandBuffer
-                            input1:_buffer1
-                            input2:input
-                            output:output
-                             shape:inputShape];
+    [_conv1      computeCommandBuffer:commandBuffer input:input    output:_buffer1];
+    [_batchNorm1 computeCommandBuffer:commandBuffer input:_buffer1 output:_buffer2];
+    [_relu1      computeCommandBuffer:commandBuffer input:_buffer2 output:_buffer1];
+    [_conv2      computeCommandBuffer:commandBuffer input:_buffer1 output:_buffer2];
+    [_batchNorm2 computeCommandBuffer:commandBuffer input:_buffer2 output:_buffer1];
+    [_add computeCommandBuffer:commandBuffer input1:_buffer1 input2:input output:output];
 }
 
 @end

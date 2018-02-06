@@ -22,9 +22,25 @@
     BrouTanHLayer_float *_tanh2;
     BrouFullConnectLayer_float *_fullConnect1;
     
+    BrouShareBuffer *_temporaryBuffer;
+    
+    id<BrouTensor> _conv0Input;
+    id<BrouTensor> _conv0Output;
+    id<BrouTensor> _maxPooling0Output;
+    id<BrouTensor> _add0Output;
+    id<BrouTensor> _tanh0Output;
+    id<BrouTensor> _conv1Output;
+    id<BrouTensor> _maxPooling1Output;
+    id<BrouTensor> _add1Output;
+    id<BrouTensor> _tanh1Output;
+    id<BrouTensor> _fullConnect0Output;
+    id<BrouTensor> _tanh2input;
+    id<BrouTensor> _tanh2Output;
+    id<BrouTensor> _fullConnect1Output;
+
     /**a temp buffer*/
-    id<MTLBuffer> _buffer0;
-    id<MTLBuffer> _buffer1;
+    // id<MTLBuffer> _buffer0;
+    // id<MTLBuffer> _buffer1;
 }
 
 @property(nonatomic, strong) PaintView *paintView;
@@ -303,138 +319,51 @@
     munmap(w3, 10*500*4);
     munmap(b3, 10*4);
     
-    /**init temp buffer*/
-    _buffer0 = [_device newBufferWithLength:24 * 24 * 20 * sizeof(float)
-                                    options:MTLResourceCPUCacheModeDefaultCache | MTLResourceStorageModeShared];
+    _temporaryBuffer = [BrouShareBuffer defaultWithDevice:_device];
     
-    _buffer1 = [_device newBufferWithLength:24 * 24 * 20 * sizeof(float)
-                                    options:MTLResourceCPUCacheModeDefaultCache | MTLResourceStorageModeShared];
+    _conv0Input         = [BrouTemporaryTensor_float initWithHeight:28 width:28 channel:1 temporaryBufer:_temporaryBuffer];
+    _conv0Output        = [BrouTemporaryTensor_float initWithHeight:24 width:24 channel:20 temporaryBufer:_temporaryBuffer];
+    _maxPooling0Output  = [BrouTemporaryTensor_float initWithHeight:12 width:12 channel:20 temporaryBufer:_temporaryBuffer];
+    _add0Output         = [BrouTemporaryTensor_float initWithHeight:12 width:12 channel:20 temporaryBufer:_temporaryBuffer];
+    _tanh0Output        = [BrouTemporaryTensor_float initWithHeight:12 width:12 channel:20 temporaryBufer:_temporaryBuffer];
+    _conv1Output        = [BrouTemporaryTensor_float initWithHeight:8 width:8 channel:50 temporaryBufer:_temporaryBuffer];
+    _maxPooling1Output  = [BrouTemporaryTensor_float initWithHeight:4 width:4 channel:50 temporaryBufer:_temporaryBuffer];
+    _add1Output         = [BrouTemporaryTensor_float initWithHeight:4 width:4 channel:50 temporaryBufer:_temporaryBuffer];
+    _tanh1Output        = [BrouTemporaryTensor_float initWithHeight:4 width:4 channel:50 temporaryBufer:_temporaryBuffer];
+    _fullConnect0Output = [BrouTemporaryTensor_float initWithHeight:1 width:1 channel:500 temporaryBufer:_temporaryBuffer];
+    
+    _tanh2input         = [BrouTemporaryTensor_float initWithLength:500 anotherTemporaryTensor:_fullConnect0Output];
+    
+    _tanh2Output        = [BrouTemporaryTensor_float initWithLength:500 temporaryBufer:_temporaryBuffer];
+    _fullConnect1Output = [BrouTemporaryTensor_float initWithLength:10 temporaryBufer:_temporaryBuffer];
 }
 
 /**
  * the input is (28, 28, 1) float gray image
  */
 - (int)runLeNetWithInput:(float*)input commandBuffer:(id<MTLCommandBuffer>)commandBuffer {
-    float *floatInput = _buffer0.contents;
+    float *floatInput = _conv0Input.tensorBuffer.contents;
     
     for (int i = 0; i < 28 * 28; ++i) {
         floatInput[4 * i] = input[i];
     }
     
-    TensorShape inputShape;
-    TensorShape outputShape;
-    
-    inputShape.dim0 = 28;
-    inputShape.dim1 = 28;
-    inputShape.dim2 = 4;
-    
-    outputShape.dim0 = 24;
-    outputShape.dim1 = 24;
-    outputShape.dim2 = 20;
-    
-    [_conv0 computeWithCommandBuffer:commandBuffer
-                               input:_buffer0
-                          inputShape:inputShape
-                              output:_buffer1
-                         outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    outputShape.dim0 = 12;
-    outputShape.dim1 = 12;
-    outputShape.dim2 = 20;
-
-    [_maxPooling0 computeWithCommandBuffer:commandBuffer
-                                     input:_buffer1
-                                inputShape:inputShape
-                                    output:_buffer0
-                               outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    outputShape.dim0 = 12;
-    outputShape.dim1 = 12;
-    outputShape.dim2 = 20;
-
-    [_add0 computeWithCommandBuffer:commandBuffer
-                              input:_buffer0
-                         inputShape:inputShape
-                             output:_buffer1
-                        outputShape:outputShape];
-
-    [_tanh0 computeWithCommandBuffer:commandBuffer
-                               input:_buffer1
-                          inputShape:inputShape
-                              output:_buffer0
-                         outputShape:outputShape];
-    
-    outputShape.dim0 = 8;
-    outputShape.dim1 = 8;
-    outputShape.dim2 = 52;
-
-    [_conv1 computeWithCommandBuffer:commandBuffer
-                               input:_buffer0
-                          inputShape:inputShape
-                              output:_buffer1
-                         outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    outputShape.dim0 = 4;
-    outputShape.dim1 = 4;
-    outputShape.dim2 = 52;
-
-    [_maxPooling1 computeWithCommandBuffer:commandBuffer
-                                     input:_buffer1
-                                inputShape:inputShape
-                                    output:_buffer0
-                               outputShape:outputShape];
-
-    inputShape = outputShape;
-
-    [_add1 computeWithCommandBuffer:commandBuffer
-                              input:_buffer0
-                         inputShape:inputShape
-                             output:_buffer1
-                        outputShape:outputShape];
-
-    [_tanh1 computeWithCommandBuffer:commandBuffer
-                               input:_buffer1
-                          inputShape:inputShape
-                              output:_buffer0
-                         outputShape:outputShape];
-
-    outputShape.dim0 = 1;
-    outputShape.dim1 = 1;
-    outputShape.dim2 = 500;
-
-    [_fullConnect0 computeWithCommandBuffer:commandBuffer
-                                      input:_buffer0
-                                 inputShape:inputShape
-                                     output:_buffer1
-                                outputShape:outputShape];
-    
-    outputShape.dim0 = 500;
-    inputShape = outputShape;
-
-    [_tanh2 computeWithCommandBuffer:commandBuffer
-                               input:_buffer1
-                          inputShape:inputShape
-                              output:_buffer0
-                         outputShape:outputShape];
-
-    outputShape.dim0 = 12;
-
-    [_fullConnect1 computeWithCommandBuffer:commandBuffer
-                                      input:_buffer0
-                                 inputShape:inputShape
-                                     output:_buffer1
-                                outputShape:outputShape];
+    [_conv0        computeCommandBuffer:commandBuffer input:_conv0Input         output:_conv0Output];
+    [_maxPooling0  computeCommandBuffer:commandBuffer input:_conv0Output        output:_maxPooling0Output];
+    [_add0         computeCommandBuffer:commandBuffer input:_maxPooling0Output  output:_add0Output];
+    [_tanh0        computeCommandBuffer:commandBuffer input:_add0Output         output:_tanh0Output];
+    [_conv1        computeCommandBuffer:commandBuffer input:_tanh0Output        output:_conv1Output];
+    [_maxPooling1  computeCommandBuffer:commandBuffer input:_conv1Output        output:_maxPooling1Output];
+    [_add1         computeCommandBuffer:commandBuffer input:_maxPooling1Output  output:_add1Output];
+    [_tanh1        computeCommandBuffer:commandBuffer input:_add1Output         output:_tanh1Output];
+    [_fullConnect0 computeCommandBuffer:commandBuffer input:_tanh1Output        output:_fullConnect0Output];
+    [_tanh2        computeCommandBuffer:commandBuffer input:_tanh2input         output:_tanh2Output];
+    [_fullConnect1 computeCommandBuffer:commandBuffer input:_tanh2Output        output:_fullConnect1Output];
 
     [commandBuffer commit];
     [commandBuffer waitUntilCompleted];
 
-    float *floatOutput = _buffer1.contents;
+    float *floatOutput = _fullConnect1Output.tensorBuffer.contents;
     int max = 0;
     for (int i = 0; i < 10; ++i) {
         if (floatOutput[i] > floatOutput[max]) {

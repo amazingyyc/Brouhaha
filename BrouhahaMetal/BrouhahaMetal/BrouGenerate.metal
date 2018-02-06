@@ -36,6 +36,7 @@ using namespace metal;
 #include "BrouReLu.metal"
 #include "BrouPReLu.metal"
 #include "BrouBatchNormalization.metal"
+#include "BrouSoftMax.metal"
 
 #undef real_is_half
 #undef real4
@@ -62,6 +63,7 @@ using namespace metal;
 #include "BrouReLu.metal"
 #include "BrouPReLu.metal"
 #include "BrouBatchNormalization.metal"
+#include "BrouSoftMax.metal"
 
 #undef real_is_float
 #undef real4

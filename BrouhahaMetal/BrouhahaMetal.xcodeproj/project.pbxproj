@@ -28,6 +28,7 @@
 		3498F0961F482E91006DF7D1 /* BrouPReLu.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouPReLu.metal; sourceTree = "<group>"; };
 		3498F0971F486B2C006DF7D1 /* BrouConvert.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouConvert.metal; sourceTree = "<group>"; };
 		3498F0981F487ABC006DF7D1 /* BrouBatchNormalization.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouBatchNormalization.metal; sourceTree = "<group>"; };
+		34B8CE272021FCE0001EFF04 /* BrouSoftMax.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouSoftMax.metal; sourceTree = "<group>"; };
 		34D2480F1F419EA700B64BFF /* BrouMacro.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouMacro.metal; sourceTree = "<group>"; };
 		34D248111F41AA5800B64BFF /* BrouTanH.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouTanH.metal; sourceTree = "<group>"; };
 		34D248131F41AA6D00B64BFF /* BrouGenerate.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrouGenerate.metal; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 				3498F0941F482B13006DF7D1 /* BrouLinear.metal */,
 				3498F0951F482D74006DF7D1 /* BrouReLu.metal */,
 				3498F0961F482E91006DF7D1 /* BrouPReLu.metal */,
+				34B8CE272021FCE0001EFF04 /* BrouSoftMax.metal */,
 				3498F0981F487ABC006DF7D1 /* BrouBatchNormalization.metal */,
 				3498F0971F486B2C006DF7D1 /* BrouConvert.metal */,
 				34D248131F41AA6D00B64BFF /* BrouGenerate.metal */,

@@ -8,11 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		342BA2DC1F5588BA0018C6C6 /* LeNetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 342BA2DB1F5588BA0018C6C6 /* LeNetViewController.m */; };
-		34317E421F5B9A960054B8DC /* BrouResidualLayer_float.m in Sources */ = {isa = PBXBuildFile; fileRef = 34317E411F5B9A960054B8DC /* BrouResidualLayer_float.m */; };
-		34317EA61F5BA2DF0054B8DC /* ArtTransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34317EA51F5BA2DF0054B8DC /* ArtTransformViewController.m */; };
 		34483E921F64E2C9005AFF9D /* PaintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E911F64E2C9005AFF9D /* PaintView.m */; };
-		34483E951F6510B5005AFF9D /* BrouResidualLayer_half.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E941F6510B5005AFF9D /* BrouResidualLayer_half.m */; };
-		34483E981F651224005AFF9D /* ArtTransformHalfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E971F651224005AFF9D /* ArtTransformHalfViewController.m */; };
 		34483E9A1F651B0D005AFF9D /* tk.png in Resources */ = {isa = PBXBuildFile; fileRef = 34483E991F651B0D005AFF9D /* tk.png */; };
 		345045301F630EAD003666A3 /* zgr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 34317EAB1F5BDC220054B8DC /* zgr.jpg */; };
 		345045311F630EAD003666A3 /* conv1_alpha in Resources */ = {isa = PBXBuildFile; fileRef = 34317E551F5BA29C0054B8DC /* conv1_alpha */; };
@@ -81,6 +77,10 @@
 		347C28591F69685C005744A8 /* BrouhahaMetal.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 347C28581F696857005744A8 /* BrouhahaMetal.metallib */; };
 		347C285B1F69973E005744A8 /* 800X800.png in Resources */ = {isa = PBXBuildFile; fileRef = 347C285A1F69973E005744A8 /* 800X800.png */; };
 		347C285D1F6998E2005744A8 /* 900X900.png in Resources */ = {isa = PBXBuildFile; fileRef = 347C285C1F6998E2005744A8 /* 900X900.png */; };
+		34D9CFE72029517600800E95 /* BrouResidualLayer_float.m in Sources */ = {isa = PBXBuildFile; fileRef = 34317E411F5B9A960054B8DC /* BrouResidualLayer_float.m */; };
+		34D9CFE8202975F300800E95 /* ArtTransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34317EA51F5BA2DF0054B8DC /* ArtTransformViewController.m */; };
+		34D9CFE92029A10D00800E95 /* BrouResidualLayer_half.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E941F6510B5005AFF9D /* BrouResidualLayer_half.m */; };
+		34D9CFEB2029E33B00800E95 /* ArtTransformHalfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34483E971F651224005AFF9D /* ArtTransformHalfViewController.m */; };
 		34EC03E91F630DFC00009332 /* libBrouhaha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EC03E81F630DFC00009332 /* libBrouhaha.a */; };
 		34F99F131F4ED04700261B45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F99F121F4ED04700261B45 /* AppDelegate.m */; };
 		34F99F161F4ED04700261B45 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F99F151F4ED04700261B45 /* ViewController.m */; };
@@ -209,10 +209,10 @@
 				34317E431F5BA2700054B8DC /* params */,
 				34317E401F5B9A960054B8DC /* BrouResidualLayer_float.h */,
 				34317E411F5B9A960054B8DC /* BrouResidualLayer_float.m */,
-				34317EA41F5BA2DF0054B8DC /* ArtTransformViewController.h */,
-				34317EA51F5BA2DF0054B8DC /* ArtTransformViewController.m */,
 				34483E931F6510B5005AFF9D /* BrouResidualLayer_half.h */,
 				34483E941F6510B5005AFF9D /* BrouResidualLayer_half.m */,
+				34317EA41F5BA2DF0054B8DC /* ArtTransformViewController.h */,
+				34317EA51F5BA2DF0054B8DC /* ArtTransformViewController.m */,
 				34483E961F651224005AFF9D /* ArtTransformHalfViewController.h */,
 				34483E971F651224005AFF9D /* ArtTransformHalfViewController.m */,
 			);
@@ -492,11 +492,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34317E421F5B9A960054B8DC /* BrouResidualLayer_float.m in Sources */,
-				34317EA61F5BA2DF0054B8DC /* ArtTransformViewController.m in Sources */,
+				34D9CFEB2029E33B00800E95 /* ArtTransformHalfViewController.m in Sources */,
+				34D9CFE92029A10D00800E95 /* BrouResidualLayer_half.m in Sources */,
+				34D9CFE8202975F300800E95 /* ArtTransformViewController.m in Sources */,
+				34D9CFE72029517600800E95 /* BrouResidualLayer_float.m in Sources */,
 				34F99F161F4ED04700261B45 /* ViewController.m in Sources */,
-				34483E951F6510B5005AFF9D /* BrouResidualLayer_half.m in Sources */,
-				34483E981F651224005AFF9D /* ArtTransformHalfViewController.m in Sources */,
 				34F99F211F4ED04700261B45 /* main.m in Sources */,
 				34483E921F64E2C9005AFF9D /* PaintView.m in Sources */,
 				34F99F131F4ED04700261B45 /* AppDelegate.m in Sources */,

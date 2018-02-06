@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34317EA91F5BC4340054B8DC /* BrouTemporaryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer.m */; };
 		3450452C1F630E5A003666A3 /* BrouLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3498F0BF1F493EC0006DF7D1 /* BrouLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3498F0B31F4938EC006DF7D1 /* BrouNeon.c in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0B21F4938EC006DF7D1 /* BrouNeon.c */; };
 		3498F0B81F4939E1006DF7D1 /* BrouUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0B71F4939E1006DF7D1 /* BrouUtils.c */; };
 		3498F0BC1F493B08006DF7D1 /* BrouConvertType.c in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0BA1F493B08006DF7D1 /* BrouConvertType.c */; };
 		3498F0C81F494298006DF7D1 /* Brouhaha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0C71F494298006DF7D1 /* Brouhaha.m */; };
+		34B8CE2C2022AD61001EFF04 /* BrouUniqueTensor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B8CE2A2022AD61001EFF04 /* BrouUniqueTensor.h */; };
+		34B8CE302023430A001EFF04 /* BrouShareBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B8CE2E2023430A001EFF04 /* BrouShareBuffer.h */; };
+		34B8CE312023430A001EFF04 /* BrouShareBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B8CE2F2023430A001EFF04 /* BrouShareBuffer.m */; };
 		34F99EF41F4E95B700261B45 /* BrouLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3498F0C01F493EC0006DF7D1 /* BrouLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +37,10 @@
 		342BA2D81F555EC60018C6C6 /* BrouAddBiasLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouAddBiasLayer.m; sourceTree = "<group>"; };
 		342BA3191F57DBE70018C6C6 /* BrouBatchNormalizationLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouBatchNormalizationLayer.h; sourceTree = "<group>"; };
 		342BA31A1F57DBE70018C6C6 /* BrouBatchNormalizationLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouBatchNormalizationLayer.m; sourceTree = "<group>"; };
-		34317EA71F5BC4340054B8DC /* BrouTemporaryBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTemporaryBuffer.h; sourceTree = "<group>"; };
-		34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTemporaryBuffer.m; sourceTree = "<group>"; };
+		34317EA71F5BC4340054B8DC /* BrouTemporaryBuffer1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTemporaryBuffer1.h; sourceTree = "<group>"; };
+		34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTemporaryBuffer1.m; sourceTree = "<group>"; };
+		343F26852026BE7D00690810 /* BrouTemporaryTensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTemporaryTensor.h; sourceTree = "<group>"; };
+		343F26862026BE7D00690810 /* BrouTemporaryTensor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTemporaryTensor.m; sourceTree = "<group>"; };
 		345EBD481F4A7FF700E746B2 /* BrouConvolutionMMLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvolutionMMLayer.h; sourceTree = "<group>"; };
 		345EBD491F4A7FF800E746B2 /* BrouConvolutionMMLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouConvolutionMMLayer.m; sourceTree = "<group>"; };
 		345EBD551F4AC1EC00E746B2 /* BrouTransposedConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTransposedConvolutionLayer.h; sourceTree = "<group>"; };
@@ -59,20 +63,21 @@
 		3498F0C41F4941AC006DF7D1 /* BrouConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouConvolutionLayer.h; sourceTree = "<group>"; };
 		3498F0C61F494298006DF7D1 /* Brouhaha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Brouhaha.h; sourceTree = "<group>"; };
 		3498F0C71F494298006DF7D1 /* Brouhaha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Brouhaha.m; sourceTree = "<group>"; };
+		34B8CE2A2022AD61001EFF04 /* BrouUniqueTensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouUniqueTensor.h; sourceTree = "<group>"; };
+		34B8CE2B2022AD61001EFF04 /* BrouUniqueTensor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouUniqueTensor.m; sourceTree = "<group>"; };
+		34B8CE2E2023430A001EFF04 /* BrouShareBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouShareBuffer.h; sourceTree = "<group>"; };
+		34B8CE2F2023430A001EFF04 /* BrouShareBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouShareBuffer.m; sourceTree = "<group>"; };
+		34B8CE322026BB3E001EFF04 /* BrouTensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTensor.h; sourceTree = "<group>"; };
 		34C83A5F1F63028700819D44 /* BrouDilatedConvolutionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouDilatedConvolutionLayer.h; sourceTree = "<group>"; };
 		34C83A601F63028700819D44 /* BrouDilatedConvolutionLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouDilatedConvolutionLayer.m; sourceTree = "<group>"; };
 		34C83A611F63058200819D44 /* BrouDilatedConvolutionMMLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouDilatedConvolutionMMLayer.h; sourceTree = "<group>"; };
 		34C83A621F63058200819D44 /* BrouDilatedConvolutionMMLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouDilatedConvolutionMMLayer.m; sourceTree = "<group>"; };
-		34F99EF01F4E8E3600261B45 /* BrouPoolingLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouPoolingLayer.h; sourceTree = "<group>"; };
-		34F99EF11F4E8E3600261B45 /* BrouPoolingLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouPoolingLayer.m; sourceTree = "<group>"; };
 		34F99EF21F4E947300261B45 /* BrouMaxPoolingLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouMaxPoolingLayer.h; sourceTree = "<group>"; };
 		34F99EF31F4E947300261B45 /* BrouMaxPoolingLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouMaxPoolingLayer.m; sourceTree = "<group>"; };
 		34F99EF51F4E96D400261B45 /* BrouAveragePoolingLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouAveragePoolingLayer.h; sourceTree = "<group>"; };
 		34F99EF61F4E96D400261B45 /* BrouAveragePoolingLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouAveragePoolingLayer.m; sourceTree = "<group>"; };
 		34F99EF71F4E99B400261B45 /* BrouTanHLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouTanHLayer.h; sourceTree = "<group>"; };
 		34F99EF81F4E99B400261B45 /* BrouTanHLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouTanHLayer.m; sourceTree = "<group>"; };
-		34F99EF91F4E9B5E00261B45 /* BrouOperateLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouOperateLayer.h; sourceTree = "<group>"; };
-		34F99EFA1F4E9B5E00261B45 /* BrouOperateLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouOperateLayer.m; sourceTree = "<group>"; };
 		34F99EFB1F4EA92A00261B45 /* BrouReLuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouReLuLayer.h; sourceTree = "<group>"; };
 		34F99EFC1F4EA92A00261B45 /* BrouReLuLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrouReLuLayer.m; sourceTree = "<group>"; };
 		34F99EFD1F4EA9E700261B45 /* BrouPReLuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrouPReLuLayer.h; sourceTree = "<group>"; };
@@ -115,6 +120,8 @@
 		3498F0A41F493713006DF7D1 /* Brouhaha */ = {
 			isa = PBXGroup;
 			children = (
+				3498F0C61F494298006DF7D1 /* Brouhaha.h */,
+				3498F0C71F494298006DF7D1 /* Brouhaha.m */,
 				3498F0AF1F4937BD006DF7D1 /* Basic */,
 				3498F0AE1F493775006DF7D1 /* Utils */,
 				3498F0BD1F493DFA006DF7D1 /* Layer */,
@@ -140,8 +147,15 @@
 			children = (
 				3498F0B01F493805006DF7D1 /* BrouMacro.h */,
 				3498F0B11F49383A006DF7D1 /* BrouStruct.h */,
-				34317EA71F5BC4340054B8DC /* BrouTemporaryBuffer.h */,
-				34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer.m */,
+				34317EA71F5BC4340054B8DC /* BrouTemporaryBuffer1.h */,
+				34317EA81F5BC4340054B8DC /* BrouTemporaryBuffer1.m */,
+				34B8CE322026BB3E001EFF04 /* BrouTensor.h */,
+				34B8CE2A2022AD61001EFF04 /* BrouUniqueTensor.h */,
+				34B8CE2B2022AD61001EFF04 /* BrouUniqueTensor.m */,
+				343F26852026BE7D00690810 /* BrouTemporaryTensor.h */,
+				343F26862026BE7D00690810 /* BrouTemporaryTensor.m */,
+				34B8CE2E2023430A001EFF04 /* BrouShareBuffer.h */,
+				34B8CE2F2023430A001EFF04 /* BrouShareBuffer.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -161,8 +175,6 @@
 				3498F0BF1F493EC0006DF7D1 /* BrouLayer.h */,
 				3498F0C01F493EC0006DF7D1 /* BrouLayer.m */,
 				3498F0BE1F493E17006DF7D1 /* Generate */,
-				3498F0C61F494298006DF7D1 /* Brouhaha.h */,
-				3498F0C71F494298006DF7D1 /* Brouhaha.m */,
 			);
 			path = Layer;
 			sourceTree = "<group>";
@@ -182,14 +194,10 @@
 				34C83A601F63028700819D44 /* BrouDilatedConvolutionLayer.m */,
 				34C83A611F63058200819D44 /* BrouDilatedConvolutionMMLayer.h */,
 				34C83A621F63058200819D44 /* BrouDilatedConvolutionMMLayer.m */,
-				34F99EF01F4E8E3600261B45 /* BrouPoolingLayer.h */,
-				34F99EF11F4E8E3600261B45 /* BrouPoolingLayer.m */,
 				34F99EF21F4E947300261B45 /* BrouMaxPoolingLayer.h */,
 				34F99EF31F4E947300261B45 /* BrouMaxPoolingLayer.m */,
 				34F99EF51F4E96D400261B45 /* BrouAveragePoolingLayer.h */,
 				34F99EF61F4E96D400261B45 /* BrouAveragePoolingLayer.m */,
-				34F99EF91F4E9B5E00261B45 /* BrouOperateLayer.h */,
-				34F99EFA1F4E9B5E00261B45 /* BrouOperateLayer.m */,
 				34F99EF71F4E99B400261B45 /* BrouTanHLayer.h */,
 				34F99EF81F4E99B400261B45 /* BrouTanHLayer.m */,
 				34F99EFB1F4EA92A00261B45 /* BrouReLuLayer.h */,
@@ -200,14 +208,14 @@
 				34F99F001F4EAF4F00261B45 /* BrouLinearLayer.m */,
 				34F99F011F4EB86300261B45 /* BrouFullConnectLayer.h */,
 				34F99F021F4EB86300261B45 /* BrouFullConnectLayer.m */,
-				34F99F031F4EC64100261B45 /* BrouConvertLayer.h */,
-				34F99F041F4EC64100261B45 /* BrouConvertLayer.m */,
 				342BA2D51F55577F0018C6C6 /* BrouAddLayer.h */,
 				342BA2D61F55577F0018C6C6 /* BrouAddLayer.m */,
 				342BA2D71F555EC60018C6C6 /* BrouAddBiasLayer.h */,
 				342BA2D81F555EC60018C6C6 /* BrouAddBiasLayer.m */,
 				342BA3191F57DBE70018C6C6 /* BrouBatchNormalizationLayer.h */,
 				342BA31A1F57DBE70018C6C6 /* BrouBatchNormalizationLayer.m */,
+				34F99F031F4EC64100261B45 /* BrouConvertLayer.h */,
+				34F99F041F4EC64100261B45 /* BrouConvertLayer.m */,
 			);
 			path = Generate;
 			sourceTree = "<group>";
@@ -220,6 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3450452C1F630E5A003666A3 /* BrouLayer.h in Headers */,
+				34B8CE302023430A001EFF04 /* BrouShareBuffer.h in Headers */,
+				34B8CE2C2022AD61001EFF04 /* BrouUniqueTensor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,10 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B8CE312023430A001EFF04 /* BrouShareBuffer.m in Sources */,
 				3498F0B31F4938EC006DF7D1 /* BrouNeon.c in Sources */,
 				3498F0B81F4939E1006DF7D1 /* BrouUtils.c in Sources */,
 				3498F0BC1F493B08006DF7D1 /* BrouConvertType.c in Sources */,
-				34317EA91F5BC4340054B8DC /* BrouTemporaryBuffer.m in Sources */,
 				34F99EF41F4E95B700261B45 /* BrouLayer.m in Sources */,
 				3498F0C81F494298006DF7D1 /* Brouhaha.m in Sources */,
 			);

@@ -1,6 +1,10 @@
 #if defined(type) && defined(real) && defined(BROU_METAL) && defined(BROU_OBJECT)
 
-@interface BROU_OBJECT(ReLuLayer) : BROU_OBJECT(OperateLayer)
+@interface BROU_OBJECT(ReLuLayer) : BrouLayer
+
+- (instancetype)initWithDevice:(id<MTLDevice>)device
+                       library:(id<MTLLibrary>)library
+                 dimensionType:(DimensionType)dimensionType;
 
 @end
 
